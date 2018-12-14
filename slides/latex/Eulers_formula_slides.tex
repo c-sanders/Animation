@@ -1,0 +1,204 @@
+\documentclass[aspectratio=169, final]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usetheme{Copenhagen}
+\usecolortheme{orchid}
+% \usefonttheme{serif}
+\usefonttheme[onlymath]{serif}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{commath}
+\usepackage{graphicx}
+
+% \usepackage[active]{preview}
+
+\title{3D fly-around of Euler's formula.}
+\author{Craig Sanders}
+\institute{Gravitas Toolworks}
+\date{2018}
+
+\begin{document}
+
+% --------------------
+% Frame : Title page
+% --------------------
+
+\frame{\titlepage}
+
+% --------------------
+% Frame : TOC
+% --------------------
+
+\iffalse
+
+\begin{frame}[t]
+
+	\frametitle{Table of Contents}
+
+	\tableofcontents
+
+\end{frame}
+
+\fi
+
+
+% --------------------
+% Frame : 0
+% --------------------
+
+\begin{frame}[t]
+
+	\frametitle{Definition of Euler's number}
+
+	Recall that Euler's number can be defined as follows;
+
+	\begin{flalign} \label{eqn_frame_1_a}
+	e &= \sum_{x=0}^{\infty}\frac{1}{x!} \\
+	  &= \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + ... \\
+	  &= \frac{1}{1} + \frac{1}{1} + \frac{1}{2} + \frac{1}{6} + ... \\
+	  &= 1 + 1 + \frac{1}{2} + \frac{1}{6} + ...
+	\end{flalign}
+
+\end{frame}
+
+% --------------------
+% Frame : 1
+% --------------------
+
+\begin{frame}[t]
+
+	\frametitle{Definition of \(sin(x)\) and \(cos(x)\)}
+
+	\begin{flalign} \label{eqn_frame_1_a}
+	sin(x) &= \sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{(2n+1)!} \\
+		   &= \frac{x^1}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
+	\end{flalign}
+
+	\begin{flalign} \label{eqn_frame_1_a}
+	cos(x) &= \sum_{n=0}^{\infty}\frac{(-1)^n x^{2n}}{(2n)!} \\
+		   &= \frac{x^0}{0!} - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
+	\end{flalign}
+
+\end{frame}
+
+% --------------------
+% Frame : 1
+% --------------------
+
+\begin{frame}[t]
+
+	\frametitle{Definition of Euler's formula}
+
+	Recall that Euler's formula is defined as follows;
+
+	\begin{equation} \label{eqn_frame_1_a}
+	e^{j\theta} = cos(\theta) + jsin(\theta)
+	\end{equation}
+
+	This appears easy enough to comprehend, doesn't it?\\
+
+	However, let's not be quite so quick.\\
+
+	What does it actually mean to raise a number -- \(e\) in this case, to the power of a complex number, \(j\theta\) in this case?
+
+\end{frame}
+
+
+% --------------------
+% Frame : 2
+% --------------------
+
+\begin{frame}[t]
+
+	\frametitle{Expanding Euler's formula}
+
+	\begin{equation} \label{eqn_frame_2_a}
+	e^{j\theta} = cos(\theta) + jsin(\theta)
+	\end{equation}
+
+	Let \(a = e\) and replace the purely Imaginary \(j\theta\) with the Complex (and thus more general), \(\sigma + j\omega\). Doing so gives;
+
+	\begin{flalign} \label{eqn_frame_2_b}
+	e^{j\theta} &= a^{\sigma + j\omega}
+	\end{flalign}
+
+	Recall that \(a = e^{ln(a)}\), thus;
+
+	\begin{flalign} \label{eqn_frame_2_c}
+	e^{j\theta} &= (e^{ln(a)})^{\sigma + j\omega} \\
+	e^{j\theta} &= e^{ln(a)\sigma + ln(a)j\omega} \\
+	e^{j\theta} &= e^{ln(a)\sigma}e^{j(ln(a)\omega)}
+	\end{flalign}
+
+\end{frame}
+
+
+% --------------------
+% Frame : 2a
+% --------------------
+
+\begin{frame}[t]
+
+	\frametitle{Expanding Euler's formula (continued)}
+
+	\begin{flalign} \label{eqn_frame_2_d}
+	e^{j\theta} &= e^{ln(a)\sigma}\big[cos\big(ln(a)\omega\big) + jsin\big(ln(a)\omega\big)\big]
+	\end{flalign}
+
+\end{frame}
+
+
+% --------------------
+% Frame : 3
+% --------------------
+
+\begin{frame}[t]
+
+	\frametitle{Raising \(e\) to the power of a Real number}
+
+	Raising \(e\) to the power of a Real number is rather straightforward.\\
+
+	\(e\) raised to the power of 0, 1, and 2, is defined as follows.
+
+	\begin{flalign} \label{eqn_frame_3_a}
+	e^{0} &= 1   \\
+	e^{1} &= 1 \times e   \\
+	e^{2} &= 1 \times e \times e
+	\end{flalign}
+
+\end{frame}
+
+
+% --------------------
+% Frame : 3
+% --------------------
+
+\begin{frame}[t]
+
+	\frametitle{Raising \(e\) to the power of an Imaginary number}
+
+	However, what happens if we want to raise \(e\) to the power of a purely Imaginary (as opposed to a Complex) number?
+
+	\begin{equation} \label{eqn_frame_3_a}
+	e^{j\theta} = ?
+	\end{equation}
+
+	When \(\theta = 0\) we get;
+
+	\begin{equation} \label{eqn_frame_3_b}
+	e^{0} = 1
+	\end{equation}
+
+	and when \(\theta = \pi/2\) we get;
+
+	\begin{equation} \label{eqn_frame_3_c}
+	e^{j\pi/2} = j
+	\end{equation}
+
+	Similarly, when \(\theta = \pi, 3\pi/2\), and \(2\pi\) we get;
+
+\end{frame}
+
+
+\end{document}

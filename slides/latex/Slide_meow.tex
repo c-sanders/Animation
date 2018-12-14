@@ -1,0 +1,31 @@
+\begin{frame}[t]
+
+	\frametitle{Definition of Euler's formula}
+
+	So how did Euler derive this formula?\\~
+
+	At the time he derived his formula, Euler was working with Infinite series representations of well known mathematical identities. From his work, he found that;
+	\begin{equation} \label{eqn_Infinite_series_of_e^jtheta}
+	e^{j\theta} = 1 + j\theta - \dfrac{\theta^2}{2!} - j\frac{\theta^3}{3!} + \frac{\theta^4}{4!} + j\frac{\theta^5}{5!} - \frac{\theta^6}{6!} - j\frac{\theta^7}{7!} + \cdots
+	\end{equation}
+	But Euler also knew that;
+	\begin{align}
+	cos(\theta) &= 1 - \dfrac{\theta^2}{2!} + \frac{\theta^4}{4!} - \frac{\theta^6}{6!} + \cdots      \label{eqn_slide_3_a} \\
+	sin(\theta) &= \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \frac{\theta^7}{7!} + \cdots  \label{eqn_slide_3_b}
+	\end{align}
+
+\end{frame}
+
+
+\begin{frame}[t]
+
+	\frametitle{Definition of Euler's formula ... (continued)}
+
+	Re-arranging the Infinite series representation of \(e^{j\theta}\) from the previous slide, so that all \(j\) terms are collected together yields;
+	\begin{equation} \label{eqn_slide_4_a}
+	e^{j\theta} = \Big(1 - \dfrac{\theta^2}{2!} + \frac{\theta^4}{4!} - \frac{\theta^6}{6!} + \cdots\Big) + j\Big(\theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \frac{\theta^7}{7!} + \cdots\Big)
+	\end{equation}
+
+	From this rearranged version of the equation, it is now obvious how Euler came up with his formula. That is, the first term within
+
+\end{frame}
