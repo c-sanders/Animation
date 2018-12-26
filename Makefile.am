@@ -10,6 +10,8 @@ SUBDIRS = slides frames videos
 
 EXTRA_DIST = python gnuplot
 
+ACLOCAL_AMFLAGS = -I m4
+
 
 .PHONY: displaySettings
 displaySettings:
