@@ -1,6 +1,7 @@
 AC_INIT([Eulers_formula_animation], [0.1], [craig@gravitas-toolworks.com])
 AC_CONFIG_SRCDIR([python/AnimationGenerator.py])
 AM_INIT_AUTOMAKE
+LT_INIT
 
 m4_include([m4/ax_ffmpeg.m4])
 m4_include([m4/ax_gnuplot.m4])
