@@ -4,10 +4,10 @@ Filename : README.PackageMaintainer
 
 The Eulers formula animation package is comprised of a number of sub-diretories,
 and the animation which it produces, is comprised of thousands of individual
-Frames. Some of these Frames are used to display the Flides, while the other
-Frames are used to display the animations. Thus, the Frames can be classified as
-either Slide Frames or Animation Frames. Both of these types of Frames will now
-be discussed in turn.
+Frames. Some of these Frames are used to display Slides, while the other Frames
+are used to display the animations. Thus, the Frames can be classified as either
+Slide Frames or Animation Frames. Both of these types of Frames will now be
+discussed in turn.
 
 1) Slide Frames
 
