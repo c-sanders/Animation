@@ -1,0 +1,65 @@
+################################################################################
+Filename : README.PackageMaintainer
+################################################################################
+
+The Eulers formula animation package is comprised of a number of sub-diretories,
+and the animation which it produces, is comprised of thousands of individual
+Frames. Some of these Frames are used to display the Flides, while the other
+Frames are used to display the animations. Thus, the Frames can be classified as
+either Slide Frames or Animation Frames. Both of these types of Frames will now
+be discussed in turn.
+
+1) Slide Frames
+
+  1.1) Creation of the Slides
+
+  LaTeX - in conjunction with the Beamer package, is used to create each of the
+  Slides.
+
+  The LaTeX source code for the Slides is stored under the following
+  sub-directory;
+
+    slides/latex
+  
+  LaTeX is then used to process this source code. The resulting PDF files are
+  stored under the following sub-directory;
+
+    slides/pdf
+  
+  The ImageMagick convert utility is then used to create PNG versions of each of
+  the PDF files. The resulting files are stored under the following
+  sub-directory.
+
+    slides/png
+	
+
+  1.2) Generation of the Slide Frames from the Slides
+
+  A Python script is used to make the Slide Frames from their corresponding
+  Slides. The Frames are generated as PNG files and are stored under the
+  following sub-directory;
+
+    frames/png
+
+  Unless specified otherwise, the overall resulting Animation is created with a
+  Frame rate of 25 fps (Frames Per Second). How long a particular Slide needs to
+  be displayed for, will dictate how many Frames need to made of it. For
+  example, if a particular Slide needs to be displayed for 10 seconds, then this
+  will require that;
+
+    10 seconds x 25 fps = 250 frames
+
+  250 frames need to be made of it.
+
+  It is this knowledge, along with some other knowledge - like knowing how to
+  sequentially number all of the Frames, which is contained within the Python
+  script
+
+
+2) Animation Frames
+
+  2.1) Creation of the Slides
+
+  gnuplot - wrapped in a fair amount of Python code, is used to create each of
+  the thousands of individual animation frames.
+
