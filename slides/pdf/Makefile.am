@@ -45,8 +45,18 @@ ${pdf_file} : ${tex_files}
 	@printf "Status   : Enter                        \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "Running pdflatex for the 1st time       \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	cd ${srcdir}/../latex && \
-	pdflatex -output-directory ${abs_builddir} ${tex_main_file} && pdflatex -output-directory ${abs_builddir} ${tex_main_file}
+	pdflatex -output-directory ${abs_builddir} ${tex_main_file} 
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "Running pdflatex for the 2nd time       \n"
+	@printf "                                        \n"
+	@printf "This is to get cross references right.  \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	cd ${srcdir}/../latex && \
+	&& pdflatex -output-directory ${abs_builddir} ${tex_main_file}
 	@printf "========================================\n"
 	@printf "========================================\n"
 	@printf "Makefile : /pdf/Makefile                \n"
