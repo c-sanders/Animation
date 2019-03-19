@@ -38,9 +38,22 @@ pdf_file        = ./Eulers_formula_animation_slides.pdf
 all         : ${pdf_file}
 ${pdf_file} : ${tex_files}
 
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : /pdf/Makefile                \n"
+	@printf "Target   : pdf_file                     \n"
+	@printf "Status   : Enter                        \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	cd ${srcdir}/../latex && \
-	pdflatex -output-directory ${abs_builddir} ${tex_main_file} && \
-	pdflatex -output-directory ${abs_builddir} ${tex_main_file}
+	pdflatex -output-directory ${abs_builddir} ${tex_main_file} && pdflatex -output-directory ${abs_builddir} ${tex_main_file}
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : /pdf/Makefile                \n"
+	@printf "Target   : pdf_file                     \n"
+	@printf "Status   : Exit                         \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 
 
 .PHONY: displaySettings
