@@ -28,13 +28,41 @@ png_file              = Eulers_formula_animation_slides.png
 all         : ${png_file}
 ${png_file} : ${pdf_file}
 
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : /png/Makefile                \n"
+	@printf "Target   : png_file                     \n"
+	@printf "Status   : Enter                        \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "Running the ImageMagick convert utility \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	convert -density 300 -quality 90 "$^" "$@"
-	gimp    --no-interface \
-			--verbose \
-			--console-messages \
-			--batch-interpreter='plug-in-script-fu-eval' \
-			--batch '(python-fu-scale-and-set-size RUN-NONINTERACTIVE 1920 1080 ".png" ${abs_builddir} ${abs_builddir})' \
-			--batch "(gimp-quit 1)"
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "Running the GIMP Plugin :               \n"
+	@printf "                                        \n"
+	@printf "   python-fu-scale-and-set-size-noninteractive\n"
+	@printf "                                        \n"
+	@printf "on each of the Slide Frame image files. \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	# ls -1 *.png | tr '\n' ':' > fileList.txt
+	ls -1 *.png > fileList.txt
+	gimp --no-interface \
+	     --verbose \
+	     --console-messages \
+	     --batch-interpreter="plug-in-script-fu-eval" \
+	     --batch '(python-fu-scale-and-set-size-noninteractive RUN-NONINTERACTIVE 1920 1080 3 "./fileList.txt")' \
+	     --batch "(gimp-quit 1)"
+	
+# gimp    --no-interface \
+#		--verbose \
+#		--console-messages \
+#		--batch-interpreter='plug-in-script-fu-eval' \
+#		--batch '(python-fu-scale-and-set-size-noninteractive RUN-NONINTERACTIVE 1920 1080 3 ".png" ${abs_builddir} ${abs_builddir})' \
+#		--batch "(gimp-quit 1)"
+			
+
 
 
 .PHONY: displaySettings
