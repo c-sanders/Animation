@@ -52,9 +52,11 @@ AC_PROG_MKDIR_P([frames/png \
 
 AC_CONFIG_FILES([Makefile \
 				 slides/Makefile \
-				 slides/pdf/Makefile \
+				 slides/latex/Makefile \
 				 slides/png/Makefile \
 				 frames/Makefile \
 				 videos/Makefile])
 
-AC_OUTPUT
+# Autoconf complains that slides/png/Makefile is already registered with AC_CONFIG_FILES
+
+# AC_OUTPUT([slides/png/Makefile])
