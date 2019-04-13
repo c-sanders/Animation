@@ -16,8 +16,8 @@
 # /usr/share/texmf/tex/latex/beamer/beamer.cls  : Version 3.06
 
 
-vpath %.tex ${srcdir}/../latex
-vpath %.pdf ${abs_builddir}
+vpath %.tex ${srcdir}/../latex/
+vpath %.pdf ${abs_builddir}/../pdf/
 vpath %.png ${abs_builddir}
 
 
@@ -37,16 +37,7 @@ tex_files       = ${tex_main_file} ${tex_slide_files}
 
 pdf_file        = ../pdf/Eulers_formula_animation_slides.pdf
 
-png_files       = Eulers_formula_animation_slides-0.png \
-                  Eulers_formula_animation_slides-1.png \
-                  Eulers_formula_animation_slides-2.png \
-                  Eulers_formula_animation_slides-3.png \
-                  Eulers_formula_animation_slides-4.png \
-                  Eulers_formula_animation_slides-5.png \
-                  Eulers_formula_animation_slides-6.png \
-                  Eulers_formula_animation_slides-7.png \
-                  Eulers_formula_animation_slides-8.png \
-                  Eulers_formula_animation_slides-9.png
+png_files       = Eulers_formula_animation_slides-0.png
 
 # build_process_png_files
 
@@ -54,21 +45,20 @@ png_files       = Eulers_formula_animation_slides-0.png \
 all : ${png_files}
 
 
-# If the pdf file changes, then rebuild ALL of the png files.
-
 ${png_files} : ${pdf_file}
 
 	@printf "========================================\n"
 	@printf "========================================\n"
-	@printf "Makefile : /png/Makefile                \n"
-	@printf "Target   : png_file                     \n"
+	@printf "Makefile : slides/png/Makefile          \n"
+	@printf "Target   : %s                           \n" ${png_files}
 	@printf "Status   : Enter                        \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
 	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
 	@printf "Running the ImageMagick convert utility \n"
 	@printf "                                        \n"
-	@printf "$@ = ${@}                               \n"
+	@printf "$@                                      \n"
+	@printf "$^                                      \n"
 	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	convert -density 300 -quality 90 "$^" "Eulers_formula_animation_slides.png"
 	ls -1 *.png > fileList.txt
@@ -85,9 +75,30 @@ ${png_files} : ${pdf_file}
 	     --batch-interpreter="plug-in-script-fu-eval" \
 	     --batch '(python-fu-scale-and-set-size-file-noninteractive RUN-NONINTERACTIVE 1920 1080 3 "./fileList.txt")' \
 	     --batch "(gimp-quit 1)"
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : slides/png/Makefile          \n"
+	@printf "Target   : png_file                     \n"
+	@printf "Status   : Exit                         \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "The Build process will now pause for 1 minute ...\n"
+	@{ \
+		set -e ; \
+		declare -i timer=0 ; \
+		while [ $${timer} -lt 60 ] ; \
+		do \
+			sleep 1 ; \
+			printf "." ; \
+			timer=timer+1 ; \
+		done ;\
+		printf "\n" ; \
+	}
 
 
 # If any of the tex files change, then rebuild the pdf file.
+#
+# make -C ../latex
 
 build_pdf_file : ${pdf_file}
 ${pdf_file} : ${tex_files}
@@ -99,6 +110,7 @@ ${pdf_file} : ${tex_files}
 	@printf "Status   : Enter                        \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
+	make -C ../latex
 	@printf "========================================\n"
 	@printf "========================================\n"
 	@printf "Makefile : /png/Makefile                \n"
@@ -106,6 +118,13 @@ ${pdf_file} : ${tex_files}
 	@printf "Status   : Exit                         \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
+
+
+.PHONY: latex_displaySettings
+latex_displaySettings:
+
+	make -C ../latex displaySettings
+
 
 .PHONY: displaySettings
 displaySettings:
