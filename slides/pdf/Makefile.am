@@ -2,7 +2,7 @@ all         :
 
 	@printf "========================================\n"
 	@printf "========================================\n"
-	@printf "Makefile : /pdf/Makefile                \n"
+	@printf "Makefile : ${abs_builddir}/Makefile     \n"
 	@printf "Target   : all                          \n"
 	@printf "Status   : Enter                        \n"
 	@printf "========================================\n"
@@ -17,7 +17,7 @@ all         :
 	@printf "which this Makefile resides in.         \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
-	@printf "Makefile : /pdf/Makefile                \n"
+	@printf "Makefile : ${abs_builddir}/Makefile     \n"
 	@printf "Target   : all                          \n"
 	@printf "Status   : Exit                         \n"
 	@printf "========================================\n"
