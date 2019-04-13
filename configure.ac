@@ -46,16 +46,19 @@ dnl AS_IF([test "x${FFMPEG}" = "xyes"],
 
 dnl		  AC_MSG_ERROR["Could not find ffmpeg in PATH])
 
-AC_PROG_MKDIR_P([frames/png \
-				 frames/jpg \
-				 frames/gif])
+AC_PROG_MKDIR_P([slides/temp \
+                 slides/pdf \
+                 frames/png \
+                 frames/jpg \
+                 frames/gif])
 
-AC_CONFIG_FILES([Makefile \
-				 slides/Makefile \
-				 slides/latex/Makefile \
-				 slides/png/Makefile \
-				 frames/Makefile \
-				 videos/Makefile])
+AC_OUTPUT([Makefile \
+           slides/Makefile \
+           slides/latex/Makefile \
+           slides/pdf/Makefile \
+           slides/png/Makefile \
+           frames/Makefile \
+           videos/Makefile])
 
 # Autoconf complains that slides/png/Makefile is already registered with AC_CONFIG_FILES
 
