@@ -1,4 +1,4 @@
-# Virtual paths instructing make where it can find particular files.
+# Virtual paths informing make where it can find files of particular types.
 
 vpath %.tex ${abs_srcdir}/../latex/
 vpath %.png ${abs_srcdir}/../latex/images/png/
@@ -37,36 +37,43 @@ all         : ../pdf/${pdf_file}
 
 ../pdf/${pdf_file} : ${tex_files}
 
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : ${abs_builddir}/Makefile     \n"
+	@printf "Target   : ../pdf/${pdf_file}           \n"
+	@printf "Status   : Enter                        \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	@printf "Deps A = $@                             \n"
 	echo "0" > latex_iterations.txt
 	@printf "Current directory = %s                  \n" ${PWD}
 	@printf "abs_srcdir = ${abs_srcdir}              \n"
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	@printf "Running latex for the 1st time          \n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	cd ${abs_srcdir}/../latex && latex -halt-on-error -output-format=pdf -output-directory ${abs_builddir} $<
 	echo "1" > latex_iterations.txt
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	@printf "Running pdflatex for the 2nd time       \n"
 	@printf "                                        \n"
 	@printf "This is to get the cross-references     \n"
 	@printf "right for any labels which may have     \n"
 	@printf "changed.                                \n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	cd ${abs_srcdir}/../latex && latex -halt-on-error -output-format=pdf -output-directory ${abs_builddir} $<
 	mv -v ${pdf_file} $@
 	echo "2" > latex_iterations.txt
-
-
-sillyTarget : ${tex_files}
-
-	@printf "Prerequisites = $^\n"
-	@printf "\n"
-	@printf "../pdf/${pdf_file}\n"
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : ${abs_builddir}/Makefile     \n"
+	@printf "Target   : ../pdf/${pdf_file}           \n"
+	@printf "Status   : Exit                        \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 
 
 .PHONY: displaySettings
