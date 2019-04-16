@@ -54,7 +54,7 @@ AC_PROG_MKDIR_P([slides/temp \
 
 AC_OUTPUT([Makefile \
            slides/Makefile \
-           slides/latex/Makefile \
+           slides/temp/Makefile \
            slides/pdf/Makefile \
            slides/png/Makefile \
            frames/Makefile \

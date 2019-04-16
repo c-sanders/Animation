@@ -13,9 +13,20 @@ EXTRA_DIST = python gnuplot
 ACLOCAL_AMFLAGS = -I m4
 
 
-slides:
+slides :
 
 	${MAKE} -C slides
+
+
+frames :
+
+	${MAKE} -C frames
+
+
+.PHONY : videos
+videos :
+
+	${MAKE} -C videos create_animation
 
 
 .PHONY: displaySettings
