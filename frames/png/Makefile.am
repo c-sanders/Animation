@@ -29,6 +29,13 @@ all : slide_frames \
 
 slide_frames : ${pdf_file}
 
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : frames/png/Makefile          \n"
+	@printf "Target   : slide_frames                 \n"
+	@printf "Status   : Enter                        \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	python  ${srcdir}/../../python/createFrames.py \
 			--sourceDirectory      ${abs_srcdir} \
 			--buildDirectory       ${abs_builddir} \
@@ -40,12 +47,36 @@ slide_frames : ${pdf_file}
 			--slidesDirectory      ${abs_builddir}/../../slides/png \
 			--gnuplotCodeDirectory ${abs_srcdir}/../../gnuplot/ \
 			--generateSlideFrames  "true"
-
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : frames/png/Makefile          \n"
+	@printf "Target   : slide_frames                 \n"
+	@printf "Status   : Exit                        \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 
 
 .PHONY          : animation_stage1_frames
 animation_stage1_frames :
 
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : frames/png/Makefile          \n"
+	@printf "Target   : animation_stage1_frames      \n"
+	@printf "Status   : Enter                        \n"
+	@printf "                                        \n"
+	@printf "sourceDirectory      = ${abs_srcdir}         \n"
+	@printf "buildDirectory       = ${abs_builddir}       \n"
+	@printf "frameRate            = ${FRAME_RATE_ANIMATION}\n"
+	@printf "resolution           = ${RESOLUTION_ANIMATION}\n"
+	@printf "aspectRation         = \"16:9\"              \n"
+	@printf "gnuplot              = ${GNUPLOT}            \n"
+	@printf "outputDirectory      = ${abs_builddir}       \n"
+	@printf "slidesDirectory      = ${abs_builddir}/../../slides/png\n"
+	@printf "gnuplotCodeDirectory = ${abs_srcdir}/../../gnuplot/"
+	@printf "generateStage1Frames = true             \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	python  ${srcdir}/../../python/createFrames.py \
 			--sourceDirectory      ${abs_srcdir} \
 			--buildDirectory       ${abs_builddir} \
@@ -54,14 +85,28 @@ animation_stage1_frames :
 			--aspectRatio          "16:9" \
 			--gnuplot              ${GNUPLOT} \
 			--outputDirectory      ${abs_builddir} \
-			--slidesDirectory      ${abs_builddir}/../../slides/png \
+			--slidesDirectory      ${abs_builddir}/../../slides/png/ \
 			--gnuplotCodeDirectory ${abs_srcdir}/../../gnuplot/ \
 			--generateStage1Frames "true"
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : frames/png/Makefile          \n"
+	@printf "Target   : animation_stage1_frames      \n"
+	@printf "Status   : Exit                         \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 
 
 .PHONY          : animation_stage2_frames
 animation_stage2_frames :
 
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : frames/png/Makefile          \n"
+	@printf "Target   : animation_stage2_frames      \n"
+	@printf "Status   : Enter                        \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
 	python  ${srcdir}/../../python/createFrames.py \
 			--sourceDirectory      ${abs_srcdir} \
 			--buildDirectory       ${abs_builddir} \
@@ -72,8 +117,15 @@ animation_stage2_frames :
 			--outputDirectory      ${abs_builddir} \
 			--slidesDirectory      ${abs_builddir}/../../slides/png \
 			--gnuplotCodeDirectory ${abs_srcdir}/../../gnuplot/ \
-			--generateStage1Frames "true"
-
+			--generateStage2Frames "true"
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : frames/png/Makefile          \n"
+	@printf "Target   : animation_stage2_frames      \n"
+	@printf "Status   : Exit                         \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
+			
 
 .PHONY          : displaySettings
 displaySettings :
