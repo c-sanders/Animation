@@ -57,7 +57,7 @@ all         : ../pdf/${pdf_file}
 	echo "1" > latex_iterations.txt
 	@printf "========================================\n"
 	@printf "========================================\n"
-	@printf "Running pdflatex for the 2nd time       \n"
+	@printf "Running latex for the 2nd time          \n"
 	@printf "                                        \n"
 	@printf "This is to get the cross-references     \n"
 	@printf "right for any labels which may have     \n"
