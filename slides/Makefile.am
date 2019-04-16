@@ -6,7 +6,7 @@
 #   - ASPECT_RATIO_ANIMATION = "16:9"
 
 
-SUBDIRS = pdf png
+SUBDIRS = temp png
 
 
 .PHONY: displaySettings
