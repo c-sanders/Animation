@@ -57,7 +57,10 @@ AC_OUTPUT([Makefile \
            slides/temp/Makefile \
            slides/pdf/Makefile \
            slides/png/Makefile \
+           gnuplot/Eulers_formula.gp \
            frames/Makefile \
+           frames/png/Makefile \
+           videos/fileList.txt \
            videos/Makefile])
 
 # Autoconf complains that slides/png/Makefile is already registered with AC_CONFIG_FILES
