@@ -57,6 +57,7 @@ AC_OUTPUT([Makefile \
            slides/temp/Makefile \
            slides/pdf/Makefile \
            slides/png/Makefile \
+           python/LaTeXGenerator.py \
            gnuplot/Eulers_formula.gp \
            frames/Makefile \
            frames/png/Makefile \

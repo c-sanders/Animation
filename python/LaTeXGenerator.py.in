@@ -1,0 +1,28 @@
+counter = 1
+
+while counter <= 251 :
+	
+	filenameLaTeX = "../slides/latex/animation_1/Eulers_formula_animation_%06d.tex" % (counter)
+	filenamePng   = "../frames/png/animation_1/Eulers_formula_%06d.png" % (counter)
+
+	titleFrame    = "Frame number %d" % (counter)
+
+	fileHandleLaTeX = open(filenameLaTeX, "w+")
+		
+	print("Have created file : %s" % (filenameLaTeX))
+		
+	fileHandleLaTeX.write("\\begin{frame}[t]\n")
+	fileHandleLaTeX.write("\n")
+	fileHandleLaTeX.write("\\frametitle{%s}\n" % (titleFrame))
+	fileHandleLaTeX.write("\n")
+	fileHandleLaTeX.write("\\begin{figure}\n")
+	fileHandleLaTeX.write("\\includegraphics[scale=0.15]{./images/png/%s}\n" % (filenamePng))
+	fileHandleLaTeX.write("\n")
+	fileHandleLaTeX.write("Test image.\n")
+	fileHandleLaTeX.write("\\end{figure}\n")
+	fileHandleLaTeX.write("\n")
+	fileHandleLaTeX.write("\\end{frame})\n")
+	
+	fileHandleLaTeX.close()
+		
+	counter += 1
