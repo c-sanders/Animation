@@ -5,12 +5,14 @@ LT_INIT
 
 m4_include([m4/ax_ffmpeg.m4])
 m4_include([m4/ax_gnuplot.m4])
+m4_include([m4/ax_colour_profile.m4])
 m4_include([m4/ax_animation_settings.m4])
 
 AC_CONFIG_MACRO_DIR([m4])
 
 AX_FFMPEG()
 AX_GNUPLOT()
+AX_COLOUR_PROFILE([/usr/share/color/icc/colord/sRGB.icc])
 AX_FRAME_RATE_ANIMATION
 AX_RESOLUTION_ANIMATION
 
@@ -59,6 +61,7 @@ AC_OUTPUT([Makefile \
            slides/png/Makefile \
            python/LaTeXGenerator.py \
            gnuplot/Eulers_formula.gp \
+           gnuplot/Eulers_formula_2.gp \
            frames/Makefile \
            frames/png/Makefile \
            videos/fileList.txt \
