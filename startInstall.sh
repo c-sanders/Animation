@@ -6,7 +6,7 @@ DIRNAME="$(dirname $0)"
 FILENAME="$(basename $0)"
 
 PYTHON_DIR="${CURRENT_DIR}/${DIRNAME}/python"
-PYTHON_FILE="${PYTHON_DIR}/runInstaller.py"
+PYTHON_FILE="${PYTHON_DIR}/startInstall.py"
 
 echo "Current dir = $CURRENT_DIR"
 echo "Python dir  = $PYTHON_DIR"
