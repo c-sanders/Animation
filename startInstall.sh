@@ -22,7 +22,7 @@ echo "Dirname     = ${DIRNAME}"
 # Therefore, use the BASH set command line utility to just set the PYTHONPATH it locally for this
 # command.
 
-set PYTHONPATH=${PYTHON_DIR} ; python3 ${PYTHON_FILE}
+set PYTHONPATH=${PYTHON_DIR} && python3 ${PYTHON_FILE}
 
 
 exit 0
