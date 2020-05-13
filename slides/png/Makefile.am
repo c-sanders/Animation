@@ -21,73 +21,52 @@ vpath %.pdf ${abs_builddir}/../pdf/
 vpath %.png ${abs_builddir}
 
 
-tex_main_file   = ../latex/Eulers_formula_animation_slides.tex
+pdf_file           = ../pdf/Eulers_formula_animation_slides.pdf
 
-tex_slide_files = ../latex/Slide_1.tex  \
-				  ../latex/Slide_2.tex  \
-				  ../latex/Slide_3.tex  \
-				  ../latex/Slide_4.tex  \
-				  ../latex/Slide_7.tex  \
-				  ../latex/Slide_8.tex  \
-				  ../latex/Slide_9.tex  \
-				  ../latex/Slide_10.tex \
-				  ../latex/Slide_11.tex
-
-tex_files       = ${tex_main_file} ${tex_slide_files}
-
-pdf_file        = ../pdf/Eulers_formula_animation_slides.pdf
-
-png_files       = Eulers_formula_animation_slides-0.png
+png_files          = Eulers_formula_animation_slides-000000.png
 
 # The list of files which follows, should be EXACTLY the same as what is listed in ./fileList.txt
 
-files_slide_set_1  = Eulers_formula_animation_slides-0.png \
-                     Eulers_formula_animation_slides-1.png \
-                     Eulers_formula_animation_slides-2.png \
-                     Eulers_formula_animation_slides-3.png \
-                     Eulers_formula_animation_slides-4.png \
-                     Eulers_formula_animation_slides-5.png \
-                     Eulers_formula_animation_slides-6.png \
-                     Eulers_formula_animation_slides-7.png \
-                     Eulers_formula_animation_slides-8.png \
-                     Eulers_formula_animation_slides-9.png
+files_slide_set_1  = Eulers_formula_animation_slides-000000.png \
+                     Eulers_formula_animation_slides-000001.png \
+                     Eulers_formula_animation_slides-000002.png \
+                     Eulers_formula_animation_slides-000003.png \
+                     Eulers_formula_animation_slides-000004.png \
+                     Eulers_formula_animation_slides-000005.png \
+                     Eulers_formula_animation_slides-000006.png \
+                     Eulers_formula_animation_slides-000007.png \
+                     Eulers_formula_animation_slides-000008.png \
+                     Eulers_formula_animation_slides-000009.png
 
-video_slide_set_1  = "../../videos/Eulers_formula_animation_slide_set_1.mp4"
-
-video_files        = ${video_file_slide_0} \
-                     ${video_file_slide_1} \
-                     ${video_file_slide_2} \
-                     ${video_file_slide_3} \
-                     ${video_file_slide_4}
-
-# build_process_png_files
+CLEANFILES         = *.png fileList.txt
 
 
-all : ${png_files}
+all          : png
 
 
-# ${png_files} : ${pdf_file}
-%.png %.pdf :
+png          : ${png_files}
 
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : slides/png/Makefile          \n"
-	@printf "Target   : png_file                     \n"
-	@printf "Status   : Enter                        \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	@printf "Running the ImageMagick convert utility.\n"
-	@printf "                                        \n"
-	@printf "Please be patient, as this may take a   \n"
-	@printf "few minutes.                            \n"
-	@printf "                                        \n"
-	@printf "Output file prefixes : $@               \n"
-	@printf "$^                                      \n"
-	@printf "                                        \n"
-	@printf "\-define png:color-type='2'              \n"
-	@printf "\-profile /usr/share/color/icc/colord/sRGB.icc \n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+
+${png_files} : ${pdf_file}
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : slides/png/Makefile                                                  \n"
+	@printf "Target   : png_file                                                             \n"
+	@printf "Status   : Enter                                                                \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "Running the ImageMagick convert utility.                                        \n"
+	@printf "                                                                                \n"
+	@printf "Please be patient, as this may take a few minutes.                              \n"
+	@printf "                                                                                \n"
+	@printf "Output file prefixes : $@                                                       \n"
+	@printf "$^                                                                              \n"
+	@printf "                                                                                \n"
+	@printf "\-define png:color-type='2'                                                     \n"
+	@printf "\-profile /usr/share/color/icc/colord/sRGB.icc                                  \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	convert -strip \
 	        -comment "Generated by Craig Sanders" \
 	        -density 300 \
@@ -95,12 +74,24 @@ all : ${png_files}
 	        -colorspace sRGB \
 	        "../pdf/Eulers_formula_animation_slides.pdf" \
 	        "Eulers_formula_animation_slides.png"
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	@printf "Renaming the PNG files with %06d format.\n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "Renaming the PNG files with %06d format.                                        \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	ls -1 *.png > fileList.txt
 	${PYTHON_BIN} ../../python/FilenameFormatter.py ./fileList.txt
 	ls -1 *.png > fileList.txt
+
+
+${pdf_file} :
+
+	${MAKE} -C ../pdf pdf
+
+
+# ${png_files} : ${pdf_file}
+# %.png %.pdf :
+
+process_png_files :
+
 	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
 	@printf "About to execute the following GIMP     \n"
 	@printf "Plugins on each of the Slide Files;     \n"
@@ -128,85 +119,6 @@ all : ${png_files}
 
 
 # If any of the tex files change, then rebuild the pdf file.
-#
-# make -C ../latex
-
-build_pdf_file : ${pdf_file}
-${pdf_file} : ${tex_files}
-
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : /png/Makefile                \n"
-	@printf "Target   : %s                           \n" ${pdf_file}
-	@printf "Status   : Enter                        \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	make -C ../latex
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : /png/Makefile                \n"
-	@printf "Target   : %s                           \n" ${pdf_file}
-	@printf "Status   : Exit                         \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-
-
-video_slide_set_1    : ${video_slide_set_1}
-${video_slide_set_1} : ${files_slide_set_1}
-
-	${FFMPEG} \
-	\
-	-y \
-	-f concat \
-	-safe 0 \
-	-i "../../videos/fileList.txt" \
-	-r ${FRAME_RATE_ANIMATION} \
-	-s ${RESOLUTION_ANIMATION} \
-	-aspect "16:9" \
-	$@
-
-
-%.rng %.rdf :
-
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile    : slides/png/Makefile       \n"
-	@printf "Suffix rule : %.png %.pdf               \n"
-	@printf "Target      : %s                        \n" ${png_files}
-	@printf "Status      : Enter                     \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	@printf "Running the ImageMagick convert utility.\n"
-	@printf "                                        \n"
-	@printf "Please be patient, as this may take a   \n"
-	@printf "few minutes.                            \n"
-	@printf "                                        \n"
-	@printf "Output file prefixes : $@               \n"
-	@printf "$^                                      \n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
-	convert -density 300 -quality 90 "$^" "Eulers_formula_animation_slides.png"
-	ls -1 *.png > fileList.txt
-	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-	@printf "Running the GIMP Plugin :               \n"
-	@printf "                                        \n"
-	@printf "   python-fu-scale-and-set-size-file-noninteractive\n"
-	@printf "                                        \n"
-	@printf "on each of the Slide files.             \n"
-	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
-	gimp --no-interface \
-		 --verbose \
-		 --console-messages \
-		 --batch-interpreter="plug-in-script-fu-eval" \
-		 --batch '(python-fu-scale-and-set-size-file-noninteractive RUN-NONINTERACTIVE 1920 1080 3 "./fileList.txt")' \
-		 --batch "(gimp-quit 1)"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : slides/png/Makefile          \n"
-	@printf "Target   : png_file                     \n"
-	@printf "Status   : Exit                         \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
 
 
 .PHONY: latex_displaySettings
@@ -228,6 +140,4 @@ displaySettings:
 	@echo "RESOLUTION_ANIMATION = ${RESOLUTION_ANIMATION}"
 
 
-test.py : test.txt
 
-	cp -v test.txt test.py
