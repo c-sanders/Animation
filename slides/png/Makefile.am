@@ -16,9 +16,9 @@
 # /usr/share/texmf/tex/latex/beamer/beamer.cls  : Version 3.06
 
 
-vpath %.tex ${srcdir}/../latex/
-vpath %.pdf ${abs_builddir}/../pdf/
-vpath %.png ${abs_builddir}
+# vpath %.tex ${srcdir}/../latex/
+# vpath %.pdf ${abs_builddir}/../pdf/
+# vpath %.png ${abs_builddir}
 
 
 pdf_file           = ../pdf/Eulers_formula_animation_slides.pdf
@@ -51,8 +51,8 @@ ${png_files} : ${pdf_file}
 
 	@printf "================================================================================\n"
 	@printf "================================================================================\n"
-	@printf "Makefile : slides/png/Makefile                                                  \n"
-	@printf "Target   : png_file                                                             \n"
+	@printf "Makefile : ${abc_builddir}/Makefile                                             \n"
+	@printf "Target   : ${png_files}                                                         \n"
 	@printf "Status   : Enter                                                                \n"
 	@printf "================================================================================\n"
 	@printf "================================================================================\n"

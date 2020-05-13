@@ -19,7 +19,14 @@ tex_files               = ${abs_srcdir}/../latex/${tex_main_file}   \
 
 pdf_file                = Eulers_formula_animation_slides.pdf
 
-CLEANFILES              = *.pdf
+CLEANFILES              = *.aux \
+                          *.log \
+                          *.nav \
+                          *.out \
+                          *.pdf \
+                          *.snm \
+                          *.toc \
+                          latex_iterations.txt
 
 
 all         : pdf
