@@ -13,6 +13,11 @@ EXTRA_DIST = python gnuplot
 ACLOCAL_AMFLAGS = -I m4
 
 
+all : displaySettings \
+      slides \
+      frames
+
+
 slides :
 
 	${MAKE} -C slides

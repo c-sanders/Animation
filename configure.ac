@@ -3,21 +3,28 @@ AC_CONFIG_SRCDIR([python/AnimationGenerator.py])
 AM_INIT_AUTOMAKE
 LT_INIT
 
-m4_include([m4/ax_ffmpeg.m4])
+m4_include([m4/ax_gimp_plugin.m4])
+m4_include([m4/ax_python.m4])
 m4_include([m4/ax_gnuplot.m4])
+m4_include([m4/ax_ffmpeg.m4])
 m4_include([m4/ax_colour_profile.m4])
 m4_include([m4/ax_animation_settings.m4])
 
 AC_CONFIG_MACRO_DIR([m4])
 
-AX_FFMPEG()
+AX_GIMP_PLUGIN_SET_IMAGE_COLOUR_PROFILE()
+AX_PYTHON()
 AX_GNUPLOT()
+AX_FFMPEG()
 AX_COLOUR_PROFILE([/usr/share/color/icc/colord/sRGB.icc])
 AX_FRAME_RATE_ANIMATION
 AX_RESOLUTION_ANIMATION
 
-AC_MSG_NOTICE([FFMPEG  = \"${FFMPEG}\"])
-AC_MSG_NOTICE([GNUPLOT = \"${GNUPLOT}\"])
+AC_MSG_NOTICE([PYTHON        = \"${PYTHON}\"])
+AC_MSG_NOTICE([PYTHON_BIN    = \"${PYTHON_BIN}\"])
+AC_MSG_NOTICE([GNUPLOT       = \"${GNUPLOT}\"])
+AC_MSG_NOTICE([FFMPEG        = \"${FFMPEG}\"])
+AC_MSG_NOTICE([COLOURPROFILE = \"${COLOURPROFILE}\"])
 
 # AC_MSG_NOTICE([About to check whether gnuplot resides within PATH])
 # AC_CHECK_PROG([FFMPEG], [ffmpeg], [yes], [no])
@@ -50,21 +57,27 @@ dnl		  AC_MSG_ERROR["Could not find ffmpeg in PATH])
 
 AC_PROG_MKDIR_P([slides/temp \
                  slides/pdf \
-                 frames/png \
-                 frames/jpg \
-                 frames/gif])
+                 frames/png/animation_1 \
+                 frames/png/animation_2])
 
-AC_OUTPUT([Makefile \
+AC_OUTPUT([runConfigure.sh \
+           Makefile \
+           message_b.txt \
+           utils/createFrames.sh \
            slides/Makefile \
            slides/temp/Makefile \
            slides/pdf/Makefile \
            slides/png/Makefile \
            python/LaTeXGenerator.py \
+           python/FilenameFormatter.py \
            gnuplot/Eulers_formula.gp \
            gnuplot/Eulers_formula_2.gp \
            frames/Makefile \
+           frames/Makefile_AnimationFrames_1 \
+           frames/Makefile_AnimationFrames_2 \
            frames/png/Makefile \
-           videos/fileList.txt \
+           frames/png/animation_1/Makefile \
+           videos/fileList_slide_set_1.txt \
            videos/Makefile])
 
 # Autoconf complains that slides/png/Makefile is already registered with AC_CONFIG_FILES
