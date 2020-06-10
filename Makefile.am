@@ -6,16 +6,16 @@
 #   - ASPECT_RATIO_ANIMATION = "16:9"
 
 
-SUBDIRS = slides frames videos
+SUBDIRS         = slides frames videos
 
-EXTRA_DIST = python gnuplot
+EXTRA_DIST      = python gnuplot
 
 ACLOCAL_AMFLAGS = -I m4
 
 
-all : displaySettings \
-      slides \
-      frames
+all :
+
+	${MAKE} -C videos
 
 
 slides :
@@ -26,12 +26,6 @@ slides :
 frames :
 
 	${MAKE} -C frames
-
-
-.PHONY : videos
-videos :
-
-	${MAKE} -C videos create_animation
 
 
 .PHONY: displaySettings
