@@ -1,0 +1,52 @@
+Filename : doc/ffmpeg_options.txt
+=================================
+
+
+The videos sub-directory of this package uses the ffmpeg utility to create its videos.
+
+Some of the ffmpeg options which are used to create these videos are explained below.
+
+
+ffmpeg options
+--------------
+
+-y
+
+Overwrite output files
+
+-r
+
+Output frame rate
+
+-loop 1
+
+
+-pix_fmt yuv444p
+
+Generate the output video using the H264 standard.
+
+# -f concat : This argument instructs ffmpeg to concatenate together all of the files which are
+#             listed in the file which is passed as an argument to -i.
+
+
+# -s ${RESOLUTION_ANIMATION}
+
+
+Notes
+-----
+
+Note 1)
+
+The files which are to be used by this command, must start with a sequence number of 1, i.e. 000001
+in this case. If they don't, then ffmpeg will complain with the following error;
+
+  Could find no file with path 'Eulers_formula_%06d.png' and index in the range 0-4
+  Eulers_formula_%06d.png: No such file or directory
+
+
+Note 2)
+
+This rule doesn't have any dependencies. This was done on purpose, as doing so means the rule
+doesn't need to concern itself with them. Rather, it lets the appropriate Makefile target in
+../slides deal with any dependencies instead.
+
