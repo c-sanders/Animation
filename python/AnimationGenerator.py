@@ -1,5 +1,6 @@
 # import SinusoidGenerator
 
+import sys
 import os
 import subprocess
 import shutil
@@ -138,22 +139,22 @@ class AnimationGenerator :
 
 	def displayStartupMessage(self) :
 
-		print("")
-		print("================================================================================")
-		print("================================================================================")
-		print("x-axis : Goes into and out of the screen.")
-		print("y-axis : Goes left to right across the screen, i.e. horizontal")
-		print("z-axis : Goes up and down the screen, i.e. vertical.")
-		print("")
-		print("x-view : The angle made with the x-y plane.")
-		print("")
-		print("y-view : The angle made with the y-z plane.")
-		print("")
-		print("Altering the value of the x-view causes the view to rotate about the x-axis.")
-		print("")
-		print("Altering the value of the y-view causes the view to rotate about the z-axis.")
-		print("================================================================================")
-		print("================================================================================")
+		sys.stderr.write("")
+		sys.stderr.write("================================================================================")
+		sys.stderr.write("================================================================================")
+		sys.stderr.write("x-axis : Goes into and out of the screen.")
+		sys.stderr.write("y-axis : Goes left to right across the screen, i.e. horizontal")
+		sys.stderr.write("z-axis : Goes up and down the screen, i.e. vertical.")
+		sys.stderr.write("")
+		sys.stderr.write("x-view : The angle made with the x-y plane.")
+		sys.stderr.write("")
+		sys.stderr.write("y-view : The angle made with the y-z plane.")
+		sys.stderr.write("")
+		sys.stderr.write("Altering the value of the x-view causes the view to rotate about the x-axis.")
+		sys.stderr.write("")
+		sys.stderr.write("Altering the value of the y-view causes the view to rotate about the z-axis.")
+		sys.stderr.write("================================================================================")
+		sys.stderr.write("================================================================================")
 
 
 	#> Documentation for a method.
@@ -190,12 +191,12 @@ class AnimationGenerator :
 
 		self.file_gp = self.gnuplotCodeDirectory + self.file_gp
 
-		print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-		print("gnuplot code directory = %s" % self.gnuplotCodeDirectory)
-		print("Output directory       = %s" % self.outputDirectory)
-		print("")
-		print("gnuplot script file    = %s" % self.file_gp)
-		print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+		sys.stderr.write("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+		sys.stderr.write("gnuplot code directory = %s" % self.gnuplotCodeDirectory)
+		sys.stderr.write("Output directory       = %s" % self.outputDirectory)
+		sys.stderr.write("")
+		sys.stderr.write("gnuplot script file    = %s" % self.file_gp)
+		sys.stderr.write("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 
 	#> Documentation for a method.
@@ -209,7 +210,7 @@ class AnimationGenerator :
 
 		# Use the LaTeX file to create the Title frame as a PDF file.
 
-		print("About to create file : ../pdf/Eulers_formula_animation_slides.pdf")
+		sys.stderr.write("About to create file : ../pdf/Eulers_formula_animation_slides.pdf")
 
 		subprocess.call(
 		  [
@@ -219,11 +220,11 @@ class AnimationGenerator :
 		  ]
 		)
 
-		print("Have created file : ../pdf/Eulers_formula_animation_slides.pdf")
+		sys.stderr.write("Have created file : ../pdf/Eulers_formula_animation_slides.pdf")
 
 		# Use the PDF version of the Title frame to create a PNG version of it.
 
-		print("About to create file : ../animation/png/title.png")
+		sys.stderr.write("About to create file : ../animation/png/title.png")
 
 		subprocess.call(
 		  [
@@ -235,7 +236,7 @@ class AnimationGenerator :
 		  ]
 		)
 
-		# print("Have created file : ../animation/png/title.png")
+		# sys.stderr.write("Have created file : ../animation/png/title.png")
 
 		#
 
@@ -245,11 +246,11 @@ class AnimationGenerator :
 
 			filename = "../images/png/Eulers_formula_" + str(self.frameNumber) + ".png"
 
-			print("About to create file : %s" % filename)
+			sys.stderr.write("About to create file : %s" % filename)
 
 			shutil.copyfile("../images/png/slides/1920x1080/Eulers_formula_animation_slides-0.png", filename)
 
-			print("Have created file    : %s" % filename)
+			sys.stderr.write("Have created file    : %s" % filename)
 
 			index            += 1
 			self.frameNumber += 1
@@ -270,10 +271,10 @@ class AnimationGenerator :
 
 		index = 1
 
-		print("slideNumber            = %d" % slideNumber)
-		print("self.displayTimes[%03d] = %d" % (slideNumber, self.displayTimes[str(slideNumber)]))
-		print("slideFilename          = %s" % slideFilename)
-		print("index                  = %d" % index)
+		sys.stderr.write("slideNumber            = %d" % slideNumber)
+		sys.stderr.write("self.displayTimes[%03d] = %d" % (slideNumber, self.displayTimes[str(slideNumber)]))
+		sys.stderr.write("slideFilename          = %s" % slideFilename)
+		sys.stderr.write("index                  = %d" % index)
 
 		while (index <= (self.displayTimes[str(slideNumber)] * self.frameRateAnimation)) :
 
@@ -284,12 +285,12 @@ class AnimationGenerator :
 			# filenameDestination = outputDirectory + "/Eulers_formula_"                  + str(self.frameNumber) + ".png"
 			filenameDestination = "%s/Eulers_formula_%06d.png" % (self.outputDirectory, self.frameNumber)
 
-			print("Source file      = %s" % slideFilename)
-			print("Destination file = %s" % filenameDestination)
+			sys.stderr.write("Source file      = %s" % slideFilename)
+			sys.stderr.write("Destination file = %s" % filenameDestination)
 
 			shutil.copyfile(slideFilename, filenameDestination)
 
-			print("    Have created file : %s" % filenameDestination)
+			sys.stderr.write("    Have created file : %s" % filenameDestination)
 
 			self.fileHandle.write(filenameDestination + "\n")
 
@@ -337,22 +338,33 @@ class AnimationGenerator :
 		title_arg           = "myTitle=\""           + str(self.index) + " : (" + str(self.view_x) + ", " + str(self.view_y) + ")\""
 		plotAll_arg         = "plotAll="             + str(self.plotAll)
 
-		print("++++++++++++++++++++++++++++++++++++++++")
-		print("%s::%s : " % (self.nameClass, nameMethod))
-		print("Index                  = %d" % self.index)
-		print("filenameDestination    = %s" % filenameDestination)
-		print("Title                  = %s" % title_arg)
-		print("")
-		print("gnuplot script file    = %s" % self.file_gp)
-		print("gnuplot code directory = %s" % self.gnuplotCodeDirectory)
-		print("Filename arg           = %s" % filename_arg)
-		print("")
-		print("View = (%f, %f)" % (self.view_x, self.view_y))
-		print("++++++++++++++++++++++++++++++++++++++++")
+		sys.stderr.write("++++++++++++++++++++++++++++++++++++++++\n")
+		sys.stderr.write("%s::%s : \n" % (self.nameClass, nameMethod))
+		sys.stderr.write("Index                  = %d\n" % self.index)
+		sys.stderr.write("filenameDestination    = %s\n" % filenameDestination)
+		sys.stderr.write("Title                  = %s\n" % title_arg)
+		sys.stderr.write("\n")
+		sys.stderr.write("gnuplot script file    = %s\n" % self.file_gp)
+		sys.stderr.write("gnuplot code directory = %s\n" % self.gnuplotCodeDirectory)
+		sys.stderr.write("Filename arg           = %s\n" % filename_arg)
+		sys.stderr.write("\n")
+		sys.stderr.write("View = (%f, %f)\n" % (self.view_x, self.view_y))
+		sys.stderr.write("\n")
+		sys.stderr.write("self.gnuplot     = %s\n" % (self.gnuplot))
+		sys.stderr.write("filename_arg     = %s\n" % (filename_arg))
+		sys.stderr.write("title_arg        = %s\n" % (title_arg))
+		sys.stderr.write("maxIteration_arg = %s\n" % (maxIteration_arg))
+		sys.stderr.write("index_arg        = %s\n" % (index_arg))
+		sys.stderr.write("view_x_arg       = %s\n" % (view_x_arg))
+		sys.stderr.write("view_y_arg       = %s\n" % (view_y_arg))
+		sys.stderr.write("plotAll_arg      = %s\n" % (plotAll_arg))
+		sys.stderr.write("self.file_gp     = %s\n" % (self.file_gp))
+		sys.stderr.write("++++++++++++++++++++++++++++++++++++++++\n")
 
 		subprocess.call(
 		  [
 		   self.gnuplot,
+		   "-e", "verbose=0",
 		   "-e", filename_arg,
 		   "-e", title_arg,
 		   "-e", maxIteration_arg,
@@ -400,8 +412,8 @@ class AnimationGenerator :
 
 			slideFilename = self.slidesDirectory + self.slideFilenames[key]
 
-			print("Key            = %s" % key)
-			print("Slide filename = %s" % slideFilename)
+			sys.stderr.write("Key            = %s" % key)
+			sys.stderr.write("Slide filename = %s" % slideFilename)
 
 			self.__generateFramesForSlide(int(key), slideFilename)
 

@@ -11,7 +11,7 @@ class ConfigureScriptAgent :
 
 	className    = "ConfigureScriptAgent"
 
-	srcDir       = os.path.dirname(__file__)
+	srcDir       = os.path.abspath(os.path.dirname(__file__) + "/../")
 	scriptMD5    = "26e3fdd4e7876e56f24d7975a954376c"
 
 	buildDir = ""
