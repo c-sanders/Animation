@@ -73,12 +73,20 @@ AC_OUTPUT([runConfigure.sh \
            gnuplot/Eulers_formula.gp \
            gnuplot/Eulers_formula_2.gp \
            frames/Makefile \
-           frames/Makefile_AnimationFrames_1 \
-           frames/Makefile_AnimationFrames_2 \
            frames/png/Makefile \
            frames/png/animation_1/Makefile \
+           frames/png/animation_1/Makefile_generate \
+           frames/png/animation_1/Makefile_process \
+           frames/png/animation_1/Makefile_set_colour_profile \
+           frames/png/animation_1/Makefile_set_image_mode \
+           frames/png/animation_1/Makefile_overlay \
+           frames/png/animation_1/Makefile_messages \
+           frames/png/animation_2/Makefile \
            videos/fileList_slide_set_1.txt \
-           videos/Makefile])
+           videos/fileList_slide_set_2.txt \
+           videos/fileList_final.txt \
+           videos/Makefile \
+           videos/Makefile_play_animation])
 
 # Autoconf complains that slides/png/Makefile is already registered with AC_CONFIG_FILES
 
