@@ -41,17 +41,16 @@ files_slide_set_1  = Eulers_formula_animation_slides-000000.png \
 CLEANFILES         = *.png fileList.txt
 
 
-all          : png
+all          : png \
+               process_png_files
 
 
 png          : ${png_files}
-
-
 ${png_files} : ${pdf_file}
 
 	@printf "================================================================================\n"
 	@printf "================================================================================\n"
-	@printf "Makefile : ${abc_builddir}/Makefile                                             \n"
+	@printf "Makefile : ./slides/png/Makefile                                                \n"
 	@printf "Target   : ${png_files}                                                         \n"
 	@printf "Status   : Enter                                                                \n"
 	@printf "================================================================================\n"
@@ -61,8 +60,10 @@ ${png_files} : ${pdf_file}
 	@printf "                                                                                \n"
 	@printf "Please be patient, as this may take a few minutes.                              \n"
 	@printf "                                                                                \n"
-	@printf "Output file prefixes : $@                                                       \n"
-	@printf "$^                                                                              \n"
+	@printf "Output file prefixes :                                                          \n"
+	@printf "                                                                                \n"
+	@printf "@ (First Target) = $@                                                           \n"
+	@printf "^ (Dependencies) = $^                                                           \n"
 	@printf "                                                                                \n"
 	@printf "\-define png:color-type='2'                                                     \n"
 	@printf "\-profile /usr/share/color/icc/colord/sRGB.icc                                  \n"
@@ -84,7 +85,7 @@ ${png_files} : ${pdf_file}
 
 ${pdf_file} :
 
-	${MAKE} -C ../pdf pdf
+	${MAKE} -C ../pdf
 
 
 # ${png_files} : ${pdf_file}
@@ -92,6 +93,13 @@ ${pdf_file} :
 
 process_png_files :
 
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : ./slides/png/Makefile                                                \n"
+	@printf "Target   : process_png_files                                                    \n"
+	@printf "Status   : Enter                                                                \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
 	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
 	@printf "About to execute the following GIMP     \n"
 	@printf "Plugins on each of the Slide Files;     \n"
@@ -111,8 +119,8 @@ process_png_files :
 	     --batch "(gimp-quit 1)"
 	@printf "========================================\n"
 	@printf "========================================\n"
-	@printf "Makefile : slides/png/Makefile          \n"
-	@printf "Target   : png_file                     \n"
+	@printf "Makefile : ./slides/png/Makefile        \n"
+	@printf "Target   : process_png_files            \n"
 	@printf "Status   : Exit                         \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
@@ -138,6 +146,3 @@ displaySettings:
 	@echo "GNUPLOT              = ${GNUPLOT}"
 	@echo "FRAME_RATE_ANIMATION = ${FRAME_RATE_ANIMATION}"
 	@echo "RESOLUTION_ANIMATION = ${RESOLUTION_ANIMATION}"
-
-
-

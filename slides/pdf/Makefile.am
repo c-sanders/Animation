@@ -1,14 +1,15 @@
 tex_main_file           = Eulers_formula_animation_slides.tex
 
-tex_slide_files         = ${abs_srcdir}/../latex/Slide_1.tex  \
-                          ${abs_srcdir}/../latex/Slide_2.tex  \
-                          ${abs_srcdir}/../latex/Slide_3.tex  \
-                          ${abs_srcdir}/../latex/Slide_4.tex  \
-                          ${abs_srcdir}/../latex/Slide_7.tex  \
-                          ${abs_srcdir}/../latex/Slide_8.tex  \
-                          ${abs_srcdir}/../latex/Slide_9.tex  \
-                          ${abs_srcdir}/../latex/Slide_10.tex \
-                          ${abs_srcdir}/../latex/Slide_11.tex \
+tex_slide_files         = ${abs_srcdir}/../latex/${tex_main_file} \
+                          ${abs_srcdir}/../latex/Slide_1.tex      \
+                          ${abs_srcdir}/../latex/Slide_2.tex      \
+                          ${abs_srcdir}/../latex/Slide_3.tex      \
+                          ${abs_srcdir}/../latex/Slide_4.tex      \
+                          ${abs_srcdir}/../latex/Slide_7.tex      \
+                          ${abs_srcdir}/../latex/Slide_8.tex      \
+                          ${abs_srcdir}/../latex/Slide_9.tex      \
+                          ${abs_srcdir}/../latex/Slide_10.tex     \
+                          ${abs_srcdir}/../latex/Slide_11.tex     \
                           ${abs_srcdir}/../latex/Slide_12.tex
 
 image_slide_files       = ${abs_srcdir}/../latex/images/png/Leonhard_Euler.png
@@ -37,13 +38,11 @@ all         : pdf
 # resulting output.
 
 pdf         : ${pdf_file}
-
-
 ${pdf_file} : ${tex_files}
 
 	@printf "========================================\n"
 	@printf "========================================\n"
-	@printf "Makefile : ${abs_builddir}/Makefile     \n"
+	@printf "Makefile : ./pdf/Makefile               \n"
 	@printf "Target   : ${pdf_file}                  \n"
 	@printf "Status   : Enter                        \n"
 	@printf "========================================\n"
@@ -73,8 +72,8 @@ ${pdf_file} : ${tex_files}
 	echo "2" > latex_iterations.txt
 	@printf "========================================\n"
 	@printf "========================================\n"
-	@printf "Makefile : ${abs_builddir}/Makefile     \n"
-	@printf "Target   : ${pdf_file}            \n"
+	@printf "Makefile : ./pdf/Makefile               \n"
+	@printf "Target   : ${pdf_file}                  \n"
 	@printf "Status   : Exit                         \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
