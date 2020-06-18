@@ -62,7 +62,11 @@ all : png
 
 
 png : png_animationFrames_1 \
-	  png_animationFrames_2
+      png_animationFrames_2
+	  
+
+png_old : png_animationFrames_1_old \
+          png_animationFrames_2_old
 
 
 # png : slide_frames_png \
@@ -79,10 +83,15 @@ png : png_animationFrames_1 \
 
 png_animationFrames_1 : Eulers_formula.gp
 
+	${MAKE} -C ./png png_animationFrames_1
+
+
+png_animationFrames_1_old : Eulers_formula.gp
+
 	${MAKE} -f Makefile_AnimationFrames_1 animation_frames_1
 
 
-png_animationFrames_2 : Eulers_formula.gp
+png_animationFrames_2_old : Eulers_formula.gp
 
 	${MAKE} -f Makefile_AnimationFrames_2 png_animationFrames_2
 

@@ -1,4 +1,21 @@
-SUBDIRS = animation_1
+SUBDIRS = animation_1 \
+          animation_2
+
+
+# vpath %.gp  ../../gnuplot
+
+
+all : png_animationFrames_1
+
+
+png_animationFrames_1 : Eulers_formula.gp
+
+	${MAKE} -C ./animation_1
+
+
+png_animationFrames_2 : Eulers_formula.gp
+
+	${MAKE} -C ./animation_2
 
 
 old         :
