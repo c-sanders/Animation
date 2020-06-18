@@ -1,0 +1,82 @@
+CLEANFILES   = *.png
+
+
+# The files listed in ${pdf_file} are the dependencies for the target ${png_file}.
+
+png_src_file = Eulers_formula_animation_slides-0.png
+
+plugin       = python-fu-runPlugin-multiple-fromFile
+slide        = "${abs_builddir}/../../../slides/png/Eulers_formula_animation_slides-000001.png"
+files        = "${abs_builddir}/fileList.txt"
+output_dir   = "${abs_builddir}"
+manipulation = "\"0\""
+suffix       = "\"result\""
+diagnostic   = "\"3\""
+gimp_command = '(${plugin} RUN-NONINTERACTIVE ${slide} ${files} ${output_dir} ${manipulation} ${suffix} ${diagnostic})'
+
+
+# Makefile_AnimationFrames_1 : ${abs_srcdir}/Makefile_AnimationFrames_1.in ../config.status
+
+#	../config.status $@
+
+
+../config.status : ${abs_srcdir}/../configure
+
+	../config.status -recheck
+
+
+all :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_set_colour_profile                   \n"
+	@printf "Target   : all (default)                                                        \n"
+	@printf "Status   : Enter                                                                \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "About to execute the following GIMP Plugin om each of the Animation Frames;     \n"
+	@printf "                                                                                \n"
+	@printf "  python-fu-set-image-colour-profile                                            \n"
+	@printf "                                                                                \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	gimp --no-interface \
+	     --verbose \
+	     --console-messages \
+	     --batch-interpreter="plug-in-script-fu-eval" \
+		 --batch '(python-fu-set-image-colour-profile RUN-NONINTERACTIVE "./fileList.txt" "${COLOURPROFILE}")' \
+	     --batch "(gimp-quit 1)"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_set_colour_profile                   \n"
+	@printf "Target   : all (default)                                                        \n"
+	@printf "Status   : Exit                                                                 \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+
+
+silly_target :
+
+	2> /dev/null | \
+	gimp   --no-interface \
+	       --verbose \
+	       --console-messages \
+	       --batch-interpreter="plug-in-script-fu-eval" \
+	       --batch '(python-fu-runPlugin-multiple-fromList RUN-NONINTERACTIVE "/home/craig/local/source/GitHub_projects/c-sanders/Animation_build/slides/png/Eulers_formula_animation_slides-000001.png" "READ_LIST_FROM_STDIN" "" "/home/craig/temp/Animation_images_png/" "DO_NOTHING" "result" "DIAGNOSTIC_DATA_NONE")' \
+	       --batch '(gimp-quit 0)'
+
+
+.PHONY: displaySettings
+displaySettings:
+
+	@echo "srcdir               = ${srcdir}"
+	@echo "abs_srcddir          = ${abs_srcdir}"
+	@echo "builddir             = ${builddir}"
+	@echo "abs_builddir         = ${abs_builddir}"
+	@echo "FFMPEG               = ${FFMPEG}"
+	@echo "GNUPLOT              = ${GNUPLOT}"
+	@echo "FRAME_RATE_ANIMATION = ${FRAME_RATE_ANIMATION}"
+	@echo "RESOLUTION_ANIMATION = ${RESOLUTION_ANIMATION}"
+	@echo ""
+	@echo "tex_files            = ${tex_files}"
+	@echo "pdf_file             = ${pdf_file}"

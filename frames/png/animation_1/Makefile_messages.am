@@ -1,0 +1,90 @@
+# File : frames/png/animation_1/Makefile_messages
+# ===============================================
+
+
+# Makefile_AnimationFrames_1 : ${abs_srcdir}/Makefile_AnimationFrames_1.in ../config.status
+
+#	../config.status $@
+
+
+../config.status : ${abs_srcdir}/../configure
+
+	../config.status -recheck
+
+
+pre_generate  :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_messages                             \n"
+	@printf "Status   : About to execute - frames/png/animation_1/Makefile_generate          \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+
+
+post_generate : 
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_messages                             \n"
+	@printf "Status   : Have executed - frames/png/animation_1/Makefile_generate             \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "The Stage 1 Animation Frames have been created.                                 \n"
+	@printf "                                                                                \n"
+	@printf "They were created by a gnuplot script.                                          \n"
+	@printf "                                                                                \n"
+	@printf "They now need to be processed and then overlaid onto the appropriate background.\n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@${abs_srcdir}/../../../sh/pauseProgress.sh
+
+
+pre_process   :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_messages                             \n"
+	@printf "Status   : About to execute - frames/png/animation_1/Makefile_process           \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+
+
+post_process  :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@${abs_srcdir}/../../../sh/pauseProgress.sh
+
+
+pre_overlay   :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_messages                             \n"
+	@printf "Status   : About to execute - frames/png/animation_1/Makefile_overlay           \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+
+
+post_overlay  :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@${abs_srcdir}/../../../sh/pauseProgress.sh
+
+
+.PHONY: displaySettings
+displaySettings:
+
+	@echo "srcdir               = ${srcdir}"
+	@echo "abs_srcddir          = ${abs_srcdir}"
+	@echo "builddir             = ${builddir}"
+	@echo "abs_builddir         = ${abs_builddir}"
+	@echo "FFMPEG               = ${FFMPEG}"
+	@echo "GNUPLOT              = ${GNUPLOT}"
+	@echo "FRAME_RATE_ANIMATION = ${FRAME_RATE_ANIMATION}"
+	@echo "RESOLUTION_ANIMATION = ${RESOLUTION_ANIMATION}"
+	@echo ""
+	@echo "tex_files            = ${tex_files}"
+	@echo "pdf_file             = ${pdf_file}"

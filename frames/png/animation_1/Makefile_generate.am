@@ -1,0 +1,98 @@
+CLEANFILES   = *.png
+
+
+# The files listed in ${pdf_file} are the dependencies for the target ${png_file}.
+
+png_src_file = Eulers_formula_animation_slides-0.png
+
+plugin       = python-fu-runPlugin-multiple-fromFile
+slide        = "${abs_builddir}/../../../slides/png/Eulers_formula_animation_slides-000001.png"
+files        = "${abs_builddir}/fileList.txt"
+output_dir   = "${abs_builddir}"
+manipulation = "\"0\""
+suffix       = "\"result\""
+diagnostic   = "\"3\""
+gimp_command = '(${plugin} RUN-NONINTERACTIVE ${slide} ${files} ${output_dir} ${manipulation} ${suffix} ${diagnostic})'
+
+
+# Makefile_AnimationFrames_1 : ${abs_srcdir}/Makefile_AnimationFrames_1.in ../config.status
+
+#	../config.status $@
+
+
+../config.status : ${abs_srcdir}/../configure
+
+	../config.status -recheck
+
+
+all : pre_message \
+      action \
+      post_message
+
+
+pre_message :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_generate                             \n"
+	@printf "Status   : Enter                                                                \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "nfnFile              = nfn_png_animationFrames_1.txt\n"
+	@printf "sourceDirectory      = ${abs_srcdir}\n"
+	@printf "buildDirectory       = ${abs_builddir}\n"
+	@printf "frameRate            = ${FRAME_RATE_ANIMATION}\n"
+	@printf "resolution           = ${RESOLUTION_ANIMATION}\n"
+	@printf "aspectRation         = \"16:9\"\n"
+	@printf "gnuplot              = ${GNUPLOT}\n"
+	@printf "outputDirectory      = ${abs_builddir}\n"
+	@printf "slidesDirectory      = ${abs_builddir}/../../../slides/png/\n"
+	@printf "gnuplotCodeDirectory = ${abs_builddir}/../../../gnuplot/\n"
+	@printf "generateStage1Frames = true\n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+
+
+action :
+
+	@${abs_srcdir}/../../../sh/pauseProgress.sh
+	rm -f fileList.txt
+	python ${abs_srcdir}/../../../python/createFrames.py \
+	       --nextFrameNumber      1 \
+	       --nfnFile              "nfn_png_animationFrames_1.txt" \
+	       --sourceDirectory      ${abs_srcdir} \
+	       --buildDirectory       ${abs_builddir} \
+	       --frameRate            ${FRAME_RATE_ANIMATION} \
+	       --resolution           ${RESOLUTION_ANIMATION} \
+	       --aspectRatio          "16:9" \
+	       --gnuplot              ${GNUPLOT} \
+	       --outputDirectory      ${abs_builddir} \
+	       --slidesDirectory      ${abs_builddir}/../../../slides/png/ \
+	       --gnuplotCodeDirectory ${abs_builddir}/../../../gnuplot/ \
+	       --generateStage1Frames "true"
+
+
+post_message :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : frames/png/animation_1/Makefile_generate                             \n"
+	@printf "Status   : Exit                                                                 \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+
+
+.PHONY          : displaySettings
+displaySettings :
+
+	@echo "srcdir               = ${srcdir}"
+	@echo "abs_srcddir          = ${abs_srcdir}"
+	@echo "builddir             = ${builddir}"
+	@echo "abs_builddir         = ${abs_builddir}"
+	@echo "FFMPEG               = ${FFMPEG}"
+	@echo "GNUPLOT              = ${GNUPLOT}"
+	@echo "FRAME_RATE_ANIMATION = ${FRAME_RATE_ANIMATION}"
+	@echo "RESOLUTION_ANIMATION = ${RESOLUTION_ANIMATION}"
+	@echo ""
+	@echo "tex_files            = ${tex_files}"
+	@echo "pdf_file             = ${pdf_file}"
