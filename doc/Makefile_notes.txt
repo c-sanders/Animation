@@ -1,0 +1,19 @@
+Filename : Makefile_notes.txt
+=============================
+
+
+The make utility will be able to determine the location within which the following files should
+reside.
+
+It does this by referring to the appropriate (%.png) vpath directive above.
+
+Note that the full relative path and filename is specified for each of the following files. If
+however, just the filename was specified, then an appropriate vpath directive would need to be set
+above in order to tell the make utility where to find the files.
+
+
+If a Makefile contains both implicit and static Pattern rules, it will cause make to issue the
+following warning;
+
+  *** mixed implicit and static pattern rules.  Stop.
+
