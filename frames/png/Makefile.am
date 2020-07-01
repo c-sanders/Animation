@@ -2,7 +2,7 @@ SUBDIRS = animation_1 \
           animation_2
 
 
-# vpath %.gp  ../../gnuplot
+vpath %.gp  ../../gnuplot
 
 
 all : png_animationFrames_1
@@ -16,32 +16,6 @@ png_animationFrames_1 : Eulers_formula.gp
 png_animationFrames_2 : Eulers_formula.gp
 
 	${MAKE} -C ./animation_2
-
-
-old         :
-
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : ${abs_builddir}/Makefile     \n"
-	@printf "Target   : all                          \n"
-	@printf "Status   : Enter                        \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "There is nothing for make to do in this \n"
-	@printf "directory. As a result, this Makefile   \n"
-	@printf "should not be invoked.                  \n"
-	@printf "                                        \n"
-	@printf "The only reason this Makefile exists, is\n"
-	@printf "so the AC_OUTPUT macro in the configure \n"
-	@printf "script will create the parent directory \n"
-	@printf "which this Makefile resides in.         \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : ${abs_builddir}/Makefile     \n"
-	@printf "Target   : all                          \n"
-	@printf "Status   : Exit                         \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
 
 
 .PHONY: displaySettings
