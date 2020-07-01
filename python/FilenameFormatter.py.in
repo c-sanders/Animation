@@ -1,0 +1,59 @@
+import sys
+import re
+import os
+
+
+print("========================================")
+print("========================================")
+print("  > FilenameFormatter.py                ")
+print("========================================")
+print("========================================")
+
+if len(sys.argv) == 2 :
+
+	fileHandle = open(sys.argv[1], "r")
+	
+	listFilenames = fileHandle.read().splitlines()
+	
+	
+	for filename in listFilenames :
+	
+		print("Filename = %s" % (filename))
+	
+		# Check if the filename contains the pattern [0-9]+, i.e. a string of one or more digits.
+	
+		result = re.search("[0-9]+", filename)
+	
+		if not result == None :
+	
+			# Filename contains pattern.
+			#
+			# Extract matching pattern and reformat it to be six digits wide with leading zeros.
+	
+			match = result.group(0)
+	
+			number = "%06d" % (int(match, 10))
+	
+			print("Match  = %s" % (match))
+			print("Number = %s" % (number))
+	
+			# Create the new filename.
+			#
+			# Do this by replacing the pattern in the original filename with its reformatted version.
+	
+			filenameNew = re.sub("[0-9]+", number, filename)
+	
+			print(result)
+	
+			# Instruct the command line to rename the file with the new filename.
+	
+			command = "mv %s %s" % (filename, filenameNew)
+	
+			print(command)
+	
+			# os.rename(filename, filenameNew)
+			os.system(command)
+	
+		else :
+	
+			print("Result = None")
