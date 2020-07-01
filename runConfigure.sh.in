@@ -1,0 +1,12 @@
+#! /bin/bash
+
+
+${abs_srcdir}/configure \
+\
+--srcdir=/home/craig/local/source/GitHub_projects/c-sanders/Animation \
+--with-gnuplot=/usr/bin/gnuplot \
+--with-ffmpeg=/usr/bin/ffmpeg \
+--with-frame_rate_animation="25" \
+--with-resolution_animation="1920x1080"
+
+exit 0
