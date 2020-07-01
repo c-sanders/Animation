@@ -63,7 +63,7 @@ AC_PROG_MKDIR_P([slides/temp \
 AC_OUTPUT([runConfigure.sh \
            Makefile \
            message_b.txt \
-           utils/createFrames.sh \
+           testScript.sh \
            slides/Makefile \
            slides/temp/Makefile \
            slides/pdf/Makefile \
@@ -82,9 +82,6 @@ AC_OUTPUT([runConfigure.sh \
            frames/png/animation_1/Makefile_overlay \
            frames/png/animation_1/Makefile_messages \
            frames/png/animation_2/Makefile \
-           videos/fileList_slide_set_1.txt \
-           videos/fileList_slide_set_2.txt \
-           videos/fileList_final.txt \
            videos/Makefile \
            videos/Makefile_play_animation])
 
