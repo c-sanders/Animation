@@ -1,12 +1,7 @@
-# The following Environment variables are used by this Makefile but should be
-# set externally by the Autoconf configure script ;
-#
-#   - FRAME_RATE_ANIMATION   = "25"
-#   - RESOLUTION_ANIMATION   = "1920x1080"
-#   - ASPECT_RATIO_ANIMATION = "16:9"
+SUBDIRS    = pdf \
+             png
 
-
-SUBDIRS = pdf png
+EXTRA_DIST = latex
 
 
 all    : slides

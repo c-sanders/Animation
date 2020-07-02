@@ -20,6 +20,13 @@
 # vpath %.pdf ${abs_builddir}/../pdf/
 # vpath %.png ${abs_builddir}
 
+SUBDIRS    =
+
+EXTRA_DIST =
+
+CLEANFILES = *.png \
+             fileList.txt
+
 
 pdf_file           = ../pdf/Eulers_formula_animation_slides.pdf
 
@@ -37,8 +44,6 @@ files_slide_set_1  = Eulers_formula_animation_slides-000000.png \
                      Eulers_formula_animation_slides-000007.png \
                      Eulers_formula_animation_slides-000008.png \
                      Eulers_formula_animation_slides-000009.png
-
-CLEANFILES         = *.png fileList.txt
 
 
 all          : png \

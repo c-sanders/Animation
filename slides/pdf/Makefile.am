@@ -1,3 +1,17 @@
+SUBDIRS    =
+
+EXTRA_DIST =
+
+CLEANFILES = *.aux \
+             *.log \
+             *.nav \
+             *.out \
+             *.pdf \
+             *.snm \
+             *.toc \
+             latex_iterations.txt
+
+
 tex_main_file           = Eulers_formula_animation_slides.tex
 
 tex_slide_files         = ${abs_srcdir}/../latex/${tex_main_file} \
@@ -19,15 +33,6 @@ tex_files               = ${abs_srcdir}/../latex/${tex_main_file}   \
                           ${image_slide_files}
 
 pdf_file                = Eulers_formula_animation_slides.pdf
-
-CLEANFILES              = *.aux \
-                          *.log \
-                          *.nav \
-                          *.out \
-                          *.pdf \
-                          *.snm \
-                          *.toc \
-                          latex_iterations.txt
 
 
 all         : pdf
@@ -74,32 +79,6 @@ ${pdf_file} : ${tex_files}
 	@printf "========================================\n"
 	@printf "Makefile : ./pdf/Makefile               \n"
 	@printf "Target   : ${pdf_file}                  \n"
-	@printf "Status   : Exit                         \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-
-
-all-old     :
-
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : ${abs_builddir}/Makefile     \n"
-	@printf "Target   : all                          \n"
-	@printf "Status   : Enter                        \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "There is nothing for make to do in this \n"
-	@printf "directory. As a result, this Makefile   \n"
-	@printf "should not be invoked.                  \n"
-	@printf "                                        \n"
-	@printf "The only reason this Makefile exists, is\n"
-	@printf "so the AC_OUTPUT macro in the configure \n"
-	@printf "script will create the parent directory \n"
-	@printf "which this Makefile resides in.         \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
-	@printf "Makefile : ${abs_builddir}/Makefile     \n"
-	@printf "Target   : all                          \n"
 	@printf "Status   : Exit                         \n"
 	@printf "========================================\n"
 	@printf "========================================\n"
