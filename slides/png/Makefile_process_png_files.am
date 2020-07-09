@@ -1,0 +1,66 @@
+# ==================================================================================================
+# Filename : ./slides/png/Makefile_process_png_files
+# --------------------------------------------------
+#
+# - Process the PNG files which were created from the PDF file.
+#
+# ==================================================================================================
+
+
+SUBDIRS    =
+
+EXTRA_DIST =
+
+CLEANFILES = *.png
+
+
+file_list          = ./fileList.txt
+
+
+all               : process_png_files
+
+
+process_png_files :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : ./slides/png/Makefile                                                \n"
+	@printf "Target   : process_png_files                                                    \n"
+	@printf "Status   : Enter                                                                \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+	@printf "About to execute the following GIMP     \n"
+	@printf "Plugins on each of the Slide Files;     \n"
+	@printf "                                        \n"
+	@printf "   python-fu-set-image-colour-profile   \n"
+	@printf "   python-fu-set-image-mode-rgb         \n"
+	@printf "   python-fu-scale-and-set-size-file-noninteractive\n"
+	@printf "                                        \n"
+	@printf "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	gimp --no-interface \
+	     --verbose \
+	     --console-messages \
+	     --batch-interpreter="plug-in-script-fu-eval" \
+	     --batch '(python-fu-set-image-colour-profile                RUN-NONINTERACTIVE                 "${file_list}"  "${COLOURPROFILE}")' \
+	     --batch '(python-fu-set-image-mode-rgb                      RUN-NONINTERACTIVE                 "${file_list}")' \
+	     --batch '(python-fu-scale-and-set-size-file-noninteractive  RUN-NONINTERACTIVE  1920  1080  3  "${file_list}")' \
+	     --batch "(gimp-quit 1)"
+	@printf "========================================\n"
+	@printf "========================================\n"
+	@printf "Makefile : ./slides/png/Makefile        \n"
+	@printf "Target   : process_png_files            \n"
+	@printf "Status   : Exit                         \n"
+	@printf "========================================\n"
+	@printf "========================================\n"
+
+
+clean             :
+
+	-rm -f ${CLEANFILES}
+
+
+displaySettings   :
+
+	${MAKE} -f ./Makefile_displaySettings
+

@@ -1,0 +1,14 @@
+all : displaySettings
+
+
+.PHONY : displaySettings
+displaySettings :
+
+	@echo "MAKE                 = ${MAKE}"
+	@echo "MAKE                 = @MAKE@"
+	@echo "srcdir               = ${srcdir}"
+	@echo "builddir             = ${builddir}"
+	@echo "FFMPEG               = ${FFMPEG}"
+	@echo "GNUPLOT              = ${GNUPLOT}"
+	@echo "FRAME_RATE_ANIMATION = ${FRAME_RATE_ANIMATION}"
+	@echo "RESOLUTION_ANIMATION = ${RESOLUTION_ANIMATION}"
