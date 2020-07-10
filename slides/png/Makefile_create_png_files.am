@@ -5,6 +5,14 @@
 # - Create the PNG files from the PDF file.
 #
 # ==================================================================================================
+#
+# - The clean rule is present in this file so that an infinite loop doesn't result when;
+#
+#     make clean
+#
+#   is invoked in this directory.
+#
+# ==================================================================================================
 
 
 SUBDIRS    =
@@ -40,16 +48,16 @@ files_slide_set_1  = Eulers_formula_animation_slides-000000.png \
 file_list          = ./fileList.txt
 
 
-all : create_png_files
+all              : create_png_files
 
 
 create_png_files : ${png_files}
-${png_files} : ${pdf_file}
+${png_files}     : ${pdf_file}
 
 	@printf "================================================================================\n"
 	@printf "================================================================================\n"
-	@printf "Makefile : ./slides/png/Makefile                                                \n"
-	@printf "Target   : ${png_files}                                                         \n"
+	@printf "Makefile : ./slides/png/Makefile_create_png_files                               \n"
+	@printf "Target   : create_png_files                                                     \n"
 	@printf "Status   : Enter                                                                \n"
 	@printf "================================================================================\n"
 	@printf "================================================================================\n"
@@ -79,27 +87,26 @@ ${png_files} : ${pdf_file}
 	ls -1 *.png > ${file_list}
 	${PYTHON_BIN} ../../python/FilenameFormatter.py ${file_list}
 	ls -1 *.png > ${file_list}
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : ./slides/png/Makefile_create_png_files                               \n"
+	@printf "Target   : create_png_files                                                     \n"
+	@printf "Status   : Exit                                                                 \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
 
 
-${pdf_file} :
+${pdf_file}      :
 
 	${MAKE} -C ../pdf
 
 
-# The following clean rule needs to be present in this Makefile.
-#
-# If it isn't, then an infinite loop will result from invoking;
-#
-#   make clean
-#
-# on the Makefile in this same directory.
+clean            :
 
-clean       :
-
-	rm -f ${CLEANFILES}
+	-rm -f ${CLEANFILES}
 
 
-displaySettings   :
+displaySettings  :
 
 	${MAKE} -f ./Makefile_displaySettings
 

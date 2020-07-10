@@ -32,7 +32,7 @@ process_png_files :
 
 clean-local       :
 
-	${MAKE} -f ./Makefile_create_png_files  clean
+	${MAKE} -f ./Makefile_create_png_files clean
 
 
 displaySettings   :
