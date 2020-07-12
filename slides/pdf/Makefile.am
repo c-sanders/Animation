@@ -1,10 +1,8 @@
 # ==================================================================================================
-# Filename : ./slides/png/Makefile
+# Filename : ./slides/pdf/Makefile
 # --------------------------------
 #
-# - Create the PNG files from the PDF file.
-#
-# - Process the PNG files.
+# - Create the PDF file from the LaTeX files.
 #
 # ==================================================================================================
 #
@@ -40,27 +38,27 @@ CLEANFILES = *.aux \
              latex_iterations.txt
 
 
-tex_main_file           = ${abs_srcdir}/../latex/Eulers_formula_animation_slides.tex
+tex_main_file     = ${abs_srcdir}/../latex/Eulers_formula_animation_slides.tex
 
-tex_slide_files         = ${tex_main_file} \
-                          ${abs_srcdir}/../latex/Slide_1.tex  \
-                          ${abs_srcdir}/../latex/Slide_2.tex  \
-                          ${abs_srcdir}/../latex/Slide_3.tex  \
-                          ${abs_srcdir}/../latex/Slide_4.tex  \
-                          ${abs_srcdir}/../latex/Slide_7.tex  \
-                          ${abs_srcdir}/../latex/Slide_8.tex  \
-                          ${abs_srcdir}/../latex/Slide_9.tex  \
-                          ${abs_srcdir}/../latex/Slide_10.tex \
-                          ${abs_srcdir}/../latex/Slide_11.tex \
-                          ${abs_srcdir}/../latex/Slide_12.tex
+tex_slide_files   = ${tex_main_file} \
+                    ${abs_srcdir}/../latex/Slide_1.tex  \
+                    ${abs_srcdir}/../latex/Slide_2.tex  \
+                    ${abs_srcdir}/../latex/Slide_3.tex  \
+                    ${abs_srcdir}/../latex/Slide_4.tex  \
+                    ${abs_srcdir}/../latex/Slide_7.tex  \
+                    ${abs_srcdir}/../latex/Slide_8.tex  \
+                    ${abs_srcdir}/../latex/Slide_9.tex  \
+                    ${abs_srcdir}/../latex/Slide_10.tex \
+                    ${abs_srcdir}/../latex/Slide_11.tex \
+                    ${abs_srcdir}/../latex/Slide_12.tex
 
-image_slide_files       = ${abs_srcdir}/../latex/images/png/Leonhard_Euler.png
+image_slide_files = ${abs_srcdir}/../latex/images/png/Leonhard_Euler.png
 
-tex_files               = ${abs_srcdir}/../latex/${tex_main_file}   \
-                          ${tex_slide_files} \
-                          ${image_slide_files}
+tex_files         = ${abs_srcdir}/../latex/${tex_main_file}   \
+                    ${tex_slide_files} \
+                    ${image_slide_files}
 
-pdf_file                = Eulers_formula_animation_slides.pdf
+pdf_file          = Eulers_formula_animation_slides.pdf
 
 
 all             : pdf
