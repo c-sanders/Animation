@@ -1,6 +1,29 @@
+# ==================================================================================================
+# Filename : ./slides/png/Makefile
+# --------------------------------
+#
+# - Create the PNG files from the PDF file.
+#
+# - Process the PNG files.
+#
+# ==================================================================================================
+#
+# Notes 
+#
+# 1) The pdf rule should execute latex from within the following directory;
+#
+#      ${abs_srcdir}/../latex directory.
+#
+#    If it doesn't, then the TeX files which are listed in ${tex_files}, won't be incorporated into
+#    the resulting pdf output file.
+#
+# ==================================================================================================
+#
 # TeX settings.
 #
 # /usr/share/texmf/tex/latex/beamer/beamer.cls  : Version 3.06
+#
+# ==================================================================================================
 
 
 SUBDIRS    =
@@ -43,9 +66,7 @@ pdf_file                = Eulers_formula_animation_slides.pdf
 all             : pdf
 
 
-# The following rule should execute latex from within the ${abs_srcdir}/../latex directory. If it
-# doesn't, then the TeX files which are listed in ${tex_slide_files}, won't be incorporated into the
-# resulting output.
+# Refer to note 1 above.
 
 pdf             : ${pdf_file}
 ${pdf_file}     : ${tex_files}
