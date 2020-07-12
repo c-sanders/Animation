@@ -1,7 +1,24 @@
+# ==================================================================================================
+# Filename : ./slides/pdf/Makefile
+# --------------------------------
+#
+# - Create the PDF file from the LaTeX file.
+#
+# ==================================================================================================
+#
 # TeX settings.
 #
 # /usr/share/texmf/tex/latex/beamer/beamer.cls  : Version 3.06
-
+#
+# ==================================================================================================
+#
+# Notes :
+#
+# 1) The pdf rule should execute latex from within the ${abs_srcdir}/../latex directory. If it
+#    doesn't, then the TeX files which are listed in ${tex_slide_files}, won't be incorporated into
+#    the resulting output.
+#
+# ==================================================================================================
 
 SUBDIRS    =
 
@@ -33,19 +50,16 @@ tex_slide_files         = ${tex_main_file} \
 
 image_slide_files       = ${abs_srcdir}/../latex/images/png/Leonhard_Euler.png
 
-tex_files               = ${abs_srcdir}/../latex/${tex_main_file}   \
-                          ${tex_slide_files} \
+tex_files               = ${tex_slide_files} \
                           ${image_slide_files}
 
-pdf_file                = Eulers_formula_animation_slides.pdf
+pdf_file                = ./Eulers_formula_animation_slides.pdf
 
 
 all             : pdf
 
 
-# The following rule should execute latex from within the ${abs_srcdir}/../latex directory. If it
-# doesn't, then the TeX files which are listed in ${tex_slide_files}, won't be incorporated into the
-# resulting output.
+# Refer to Note 1 at the top of this file.
 
 pdf             : ${pdf_file}
 ${pdf_file}     : ${tex_files}
@@ -63,9 +77,9 @@ ${pdf_file}     : ${tex_files}
 	@printf "abs_srcdir = ${abs_srcdir}                                                      \n"
 	@printf "================================================================================\n"
 	@printf "================================================================================\n"
-	@printf "Running latex for the 1st time          \n"
-	@printf "========================================\n"
-	@printf "========================================\n"
+	@printf "Running latex for the 1st time                                                  \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
 	cd ${abs_srcdir}/../latex && latex -halt-on-error -output-format=pdf -output-directory ${abs_builddir} ${tex_main_file}
 	echo "1" > latex_iterations.txt
 	@printf "================================================================================\n"
