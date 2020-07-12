@@ -65,9 +65,14 @@ AC_OUTPUT([runConfigure.sh \
            message_b.txt \
            testScript.sh \
            slides/Makefile \
+           slides/Makefile_displaySettings \
            slides/temp/Makefile \
            slides/pdf/Makefile \
+           slides/pdf/Makefile_displaySettings \
            slides/png/Makefile \
+           slides/png/Makefile_displaySettings \
+           slides/png/Makefile_create_png_files \
+           slides/png/Makefile_process_png_files \
            python/LaTeXGenerator.py \
            python/FilenameFormatter.py \
            gnuplot/Eulers_formula.gp \
