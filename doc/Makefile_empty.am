@@ -1,0 +1,22 @@
+all :
+
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : ${abs_builddir}/Makefile                                             \n"
+	@printf "Target   : all                                                                  \n"
+	@printf "Status   : Enter                                                                \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "There is nothing for make to do in this directory. As a result, this Makefile   \n"
+	@printf "should not be invoked.                                                          \n"
+	@printf "                                                                                \n"
+	@printf "The only reason this Makefile exists, is so the AC_OUTPUT macro in the configure\n"
+	@printf "script will create the parent directory which this Makefile resides in.         \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	@printf "Makefile : ${abs_builddir}/Makefile                                             \n"
+	@printf "Target   : all                                                                  \n"
+	@printf "Status   : Exit                                                                 \n"
+	@printf "================================================================================\n"
+	@printf "================================================================================\n"
+	
