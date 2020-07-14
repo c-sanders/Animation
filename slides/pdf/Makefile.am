@@ -2,21 +2,24 @@
 # Filename : ./slides/pdf/Makefile
 # --------------------------------
 #
-# - Create the PDF file from the LaTeX file.
+# - Create the PDF file from the LaTeX files.
+#
+# ==================================================================================================
+#
+# Notes 
+#
+# 1) The pdf rule should execute latex from within the following directory;
+#
+#      ${abs_srcdir}/../latex directory.
+#
+#    If it doesn't, then the TeX files which are listed in ${tex_files}, won't be incorporated into
+#    the resulting pdf output file.
 #
 # ==================================================================================================
 #
 # TeX settings.
 #
 # /usr/share/texmf/tex/latex/beamer/beamer.cls  : Version 3.06
-#
-# ==================================================================================================
-#
-# Notes :
-#
-# 1) The pdf rule should execute latex from within the ${abs_srcdir}/../latex directory. If it
-#    doesn't, then the TeX files which are listed in ${tex_slide_files}, won't be incorporated into
-#    the resulting output.
 #
 # ==================================================================================================
 
