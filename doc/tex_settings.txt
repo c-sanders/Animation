@@ -1,0 +1,4 @@
+TeX settings.
+
+/usr/share/texmf/tex/latex/beamer/beamer.cls  : Version 3.06
+
