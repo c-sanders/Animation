@@ -8,7 +8,7 @@
 #
 # Notes 
 #
-# 1) The pdf rule should execute latex from within the following directory;
+# 1) The run_latex_1 and run_latex_2 rules should execute latex from within the following directory;
 #
 #      ${abs_srcdir}/../latex directory.
 #
@@ -23,86 +23,96 @@
 #
 # ==================================================================================================
 
-SUBDIRS    =
+SUBDIRS           =
 
-EXTRA_DIST =
+EXTRA_DIST        =
 
-CLEANFILES = *.aux \
-             *.log \
-             *.nav \
-             *.out \
-             *.pdf \
-             *.snm \
-             *.toc \
-             latex_iterations.txt
+CLEANFILES        = *.aux \
+                    *.log \
+                    *.nav \
+                    *.out \
+                    *.pdf \
+                    *.snm \
+                    *.toc \
+                    latex_iterations.txt
 
 
-tex_main_file           = ${abs_srcdir}/../latex/Eulers_formula_animation_slides.tex
+tex_main_file     = ${abs_srcdir}/../latex/Eulers_formula_animation_slides.tex
 
-tex_slide_files         = ${tex_main_file} \
-                          ${abs_srcdir}/../latex/Slide_1.tex  \
-                          ${abs_srcdir}/../latex/Slide_2.tex  \
-                          ${abs_srcdir}/../latex/Slide_3.tex  \
-                          ${abs_srcdir}/../latex/Slide_4.tex  \
-                          ${abs_srcdir}/../latex/Slide_7.tex  \
-                          ${abs_srcdir}/../latex/Slide_8.tex  \
-                          ${abs_srcdir}/../latex/Slide_9.tex  \
-                          ${abs_srcdir}/../latex/Slide_10.tex \
-                          ${abs_srcdir}/../latex/Slide_11.tex \
-                          ${abs_srcdir}/../latex/Slide_12.tex
+tex_slide_files   = ${tex_main_file} \
+                    ${abs_srcdir}/../latex/Slide_1.tex  \
+                    ${abs_srcdir}/../latex/Slide_2.tex  \
+                    ${abs_srcdir}/../latex/Slide_3.tex  \
+                    ${abs_srcdir}/../latex/Slide_4.tex  \
+                    ${abs_srcdir}/../latex/Slide_7.tex  \
+                    ${abs_srcdir}/../latex/Slide_8.tex  \
+                    ${abs_srcdir}/../latex/Slide_9.tex  \
+                    ${abs_srcdir}/../latex/Slide_10.tex \
+                    ${abs_srcdir}/../latex/Slide_11.tex \
+                    ${abs_srcdir}/../latex/Slide_12.tex
 
-image_slide_files       = ${abs_srcdir}/../latex/images/png/Leonhard_Euler.png
+image_slide_files = ${abs_srcdir}/../latex/images/png/Leonhard_Euler.png
 
-tex_files               = ${tex_slide_files} \
-                          ${image_slide_files}
+tex_files         = ${tex_slide_files} \
+                    ${image_slide_files}
 
-pdf_file                = ./Eulers_formula_animation_slides.pdf
+pdf_file          = ./Eulers_formula_animation_slides.pdf
 
 
 all             : pdf
 
 
-# Refer to Note 1 at the top of this file.
-
 pdf             : ${pdf_file}
 ${pdf_file}     : ${tex_files}
 
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
-	@printf "Makefile : ./slides/pdf/Makefile                                                \n"
-	@printf "Target   : pdf                                                                  \n"
-	@printf "Status   : Enter                                                                \n"
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
-	@printf "Deps A = $@                                                                     \n"
+	${MAKE} generate_pdf
+
+
+generate_pdf    : pre_latex_1 \
+                  run_latex_1 \
+                  messages_pre_2 \
+                  run_latex_2 \
+                  messages_post
+
+
+pre_latex_1     : messages_pre_1
+
 	echo "0" > latex_iterations.txt
-	@printf "Current directory = %s                                                          \n" ${PWD}
-	@printf "abs_srcdir = ${abs_srcdir}                                                      \n"
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
-	@printf "Running latex for the 1st time                                                  \n"
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
-	cd ${abs_srcdir}/../latex && latex -halt-on-error -output-format=pdf -output-directory ${abs_builddir} ${tex_main_file}
+
+
+messages_pre_1  :
+
+	${MAKE} -f ./Makefile_messages pre_1a
+	@printf "Deps A = $@                                                                     \n"
+	${MAKE} -f ./Makefile_messages pre_1b
+
+
+messages_pre_2  :
+
+	${MAKE} -f ./Makefile_messages pre_2
+
+
+messages_post   :
+
+	${MAKE} -f ./Makefile_messages post
+
+
+# Refer to Note 1 at the top of this file.
+
+run_latex_1     : ${tex_files}
+
+	cd ${abs_srcdir}/../latex && \
+	latex -halt-on-error -output-format=pdf -output-directory ${abs_builddir} ${tex_main_file}
 	echo "1" > latex_iterations.txt
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
-	@printf "Running latex for the 2nd time                                                  \n"
-	@printf "                                                                                \n"
-	@printf "This is being done to correct the cross-references of any labels which may have \n"
-	@printf "changed.                                                                        \n"
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
-	cd ${abs_srcdir}/../latex && latex -halt-on-error -output-format=pdf -output-directory ${abs_builddir} ${tex_main_file}
-	@printf "mv -v ${pdf_file} $@\n"
+
+
+# Refer to Note 1 at the top of this file.
+
+run_latex_2     :
+
+	cd ${abs_srcdir}/../latex && \
+	latex -halt-on-error -output-format=pdf -output-directory ${abs_builddir} ${tex_main_file}
 	echo "2" > latex_iterations.txt
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
-	@printf "Makefile : ./slides/pdf/Makefile                                                \n"
-	@printf "Target   : pdf                                                                  \n"
-	@printf "Status   : Exit                                                                 \n"
-	@printf "================================================================================\n"
-	@printf "================================================================================\n"
 
 
 displaySettings :

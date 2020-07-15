@@ -68,6 +68,7 @@ AC_OUTPUT([runConfigure.sh \
            slides/Makefile_displaySettings \
            slides/temp/Makefile \
            slides/pdf/Makefile \
+           slides/pdf/Makefile_messages \
            slides/pdf/Makefile_displaySettings \
            slides/png/Makefile \
            slides/png/Makefile_displaySettings \
