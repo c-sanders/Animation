@@ -13,16 +13,19 @@ all :
 	${MAKE} -C videos
 
 
+.PHONY : slides
 slides :
 
 	${MAKE} -C slides
 
 
+.PHONY : frames
 frames :
 
 	${MAKE} -C frames
 
 
+.PHONY : videos
 videos :
 
 	${MAKE} -C videos

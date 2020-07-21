@@ -4,10 +4,13 @@ SUBDIRS    = pdf \
 EXTRA_DIST = latex
 
 
-all    : slides
+all             :
 
 
-slides :
+# The slides target is no longer required anymore as make will recurse into the two sub-dirs which
+# are listed above.
+
+slides          :
 
 	${MAKE} -C ./png
 
