@@ -1,3 +1,19 @@
+# ==================================================================================================
+# Filename : ./slides/Makefile
+# ----------------------------
+#
+# - Create the PDF file.
+#
+# - Create the PNG files from the PDF file.
+#
+# - Process the PNG files.
+# ==================================================================================================
+# Notes
+# -----
+#
+# Refer to Note 1) within ../doc/Makefile_notes.txt
+# ==================================================================================================
+
 SUBDIRS    = pdf \
              png
 
@@ -5,14 +21,6 @@ EXTRA_DIST = latex
 
 
 all             :
-
-
-# The slides target is no longer required anymore as make will recurse into the two sub-dirs which
-# are listed above.
-
-slides          :
-
-	${MAKE} -C ./png
 
 
 displaySettings :
